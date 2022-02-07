@@ -1,0 +1,8 @@
+@use "app";
+
+.textbox {
+  background-color: app.$primary-color;
+  border: solid black 1px;
+  width: 500px;
+  height: 200px;
+}

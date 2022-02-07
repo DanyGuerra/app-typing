@@ -1,10 +1,11 @@
-import "../styles/App.css";
+import "../styles/App.scss";
 import Keyboard from "./Keyboard";
+import TextBox from "./TextBox";
 
 function App() {
   return (
     <>
-      <h1>Hola que hace</h1>
+      <TextBox />
       <Keyboard />
     </>
   );
