@@ -1,10 +1,12 @@
 import "../styles/App.css";
+import Keyboard from "./Keyboard";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hey its running!!</h1>
-    </div>
+    <>
+      <h1>Hola que hace</h1>
+      <Keyboard />
+    </>
   );
 }
 
