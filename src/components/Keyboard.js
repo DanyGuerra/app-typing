@@ -1,3 +1,22 @@
+document.addEventListener("keydown", (e) => {
+  if (e.keyCode === 9) e.preventDefault();
+  console.log(e);
+  const keyCode = e.keyCode;
+  if (keyCode) {
+    const keyPress = document.getElementById(`key-${keyCode}`);
+    keyPress.classList.add("key-press");
+  }
+});
+
+document.addEventListener("keyup", (e) => {
+  if (e.keyCode === 9) e.preventDefault();
+  const keyCode = e.keyCode;
+  if (keyCode) {
+    const keyPress = document.getElementById(`key-${keyCode}`);
+    keyPress.classList.remove("key-press");
+  }
+});
+
 function Keyboard() {
   return (
     <div className="keyboard">
@@ -15,6 +34,10 @@ function Keyboard() {
               stroke: #000000;
               stroke-width: 0.5;
               stroke-miterlimit: 10;
+            }
+
+            .key-press{
+              fill:red;
             }
 
             .st1 {
@@ -38,7 +61,7 @@ function Keyboard() {
         </style>
         <g id="key-space">
           <path
-            id="key_00000068650883886660995400000002517111614513863852_"
+            id="key-32"
             class="st0"
             d="M232.06,111.91H85.13c-1.1,0-2-0.9-2-2V95.72
 		c0-1.1,0.9-2,2-2h146.93c1.1,0,2,0.9,2,2v14.19C234.06,111.01,233.16,111.91,232.06,111.91z"
@@ -48,6 +71,7 @@ function Keyboard() {
           <g id="key-tilde">
             <path
               class="st0"
+              id="key-192"
               d="M29.8,25.23H6.17c-1.1,0-2-0.9-2-2V9.04c0-1.1,0.9-2,2-2H29.8c1.1,0,2,0.9,2,2v14.19
 			C31.8,24.33,30.9,25.23,29.8,25.23z"
             />
@@ -57,6 +81,7 @@ function Keyboard() {
           </g>
           <g id="key-tab">
             <path
+              id="key-9"
               class="st0"
               d="M34.34,46.92H6.17c-1.1,0-2-0.9-2-2V30.74c0-1.1,0.9-2,2-2h28.17c1.1,0,2,0.9,2,2v14.19
 			C36.34,46.03,35.44,46.92,34.34,46.92z"
@@ -67,6 +92,7 @@ function Keyboard() {
           </g>
           <g id="key-caps-lock">
             <path
+              id="key-20"
               class="st0"
               d="M39.16,68.59H6.17c-1.1,0-2-0.9-2-2V52.4c0-1.1,0.9-2,2-2h32.99c1.1,0,2,0.9,2,2v14.19
 			C41.16,67.69,40.26,68.59,39.16,68.59z"
@@ -77,7 +103,7 @@ function Keyboard() {
           </g>
           <g id="key-lshift">
             <path
-              id="rectangle"
+              id="key-16"
               class="st0"
               d="M29.8,90.25H6.17c-1.1,0-2-0.9-2-2V74.06c0-1.1,0.9-2,2-2H29.8c1.1,0,2,0.9,2,2v14.19
 			C31.8,89.35,30.9,90.25,29.8,90.25z"
@@ -88,7 +114,7 @@ function Keyboard() {
           </g>
           <g id="key-left-control">
             <path
-              id="key_00000168092825062739483450000010692979760072245429_"
+              id="key-17"
               class="st0"
               d="M51.36,111.91H6.17c-1.1,0-2-0.9-2-2V95.72
 			c0-1.1,0.9-2,2-2h45.2c1.1,0,2,0.9,2,2v14.19C53.36,111.01,52.47,111.91,51.36,111.91z"
@@ -97,9 +123,10 @@ function Keyboard() {
               CTRL
             </text>
           </g>
-          <g id="key-alt">
+          <g id="key-left-alt">
             <path
               class="st0"
+              id="key-18"
               d="M78.11,111.91H58.38c-1.1,0-2-0.9-2-2V95.72c0-1.1,0.9-2,2-2h19.73c1.1,0,2,0.9,2,2v14.19
 			C80.11,111.01,79.21,111.91,78.11,111.91z"
             />
