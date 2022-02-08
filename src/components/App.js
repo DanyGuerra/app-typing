@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <TextBox />
-      <Keyboard />
+      <Keyboard colorKeyActived={"#502888"} colorTextActived={"#fffbfe"} />
     </>
   );
 }

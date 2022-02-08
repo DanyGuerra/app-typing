@@ -5,8 +5,13 @@ document.addEventListener("keydown", (e) => {
   }
 
   const svgPressed = document.getElementById(`rect-${keyPressed}`);
+  const textPressed = document.getElementById(`text-${keyPressed}`);
+
   if (svgPressed) {
     svgPressed.classList.add("key-active");
+  }
+  if (textPressed) {
+    textPressed.classList.add("text-active");
   }
 });
 
@@ -17,12 +22,17 @@ document.addEventListener("keyup", (e) => {
   }
 
   const svgPressed = document.getElementById(`rect-${keyPressed}`);
+  const textPressed = document.getElementById(`text-${keyPressed}`);
+
   if (svgPressed) {
     svgPressed.classList.remove("key-active");
   }
+  if (textPressed) {
+    textPressed.classList.remove("text-active");
+  }
 });
 
-function Keyboard() {
+function Keyboard(props) {
   return (
     <div className="keyboard">
       <svg
@@ -36,12 +46,15 @@ function Keyboard() {
           {`
             .st0{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
             .st1{font-family:'Open Sans';}
-            .st2{font-size:8px;}
+            .st2{font-size:10px;}
             .st3{stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
-            .st4{font-size:4px;}
-            .st5{font-size:6px;}
+            .st4{font-size:5px;}
+            .st5{font-size:7px;}
             .key-active{
-              fill:red;
+              fill:${props.colorKeyActived};
+            }
+            .text-active{
+              fill:${props.colorTextActived};
             }
           `}
         </style>
