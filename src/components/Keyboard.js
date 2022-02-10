@@ -3,44 +3,7 @@ import { gsap } from "gsap";
 import { useEffect } from "react";
 import "../styles/Keyboard.scss";
 
-const handleKeydown = (e) => {
-  const keyPressed = e.code;
-  if (keyPressed === "Tab" || "AltLeft") {
-    e.preventDefault();
-  }
-
-  const svgPressed = document.getElementById(`rect-${keyPressed}`);
-  const textPressed = document.getElementById(`text-${keyPressed}`);
-
-  if (svgPressed) {
-    svgPressed.classList.add("key-active");
-  }
-  if (textPressed) {
-    textPressed.classList.add("text-active");
-  }
-};
-
-const handleKeyup = (e) => {
-  const keyPressed = e.code;
-  if (keyPressed === "Tab" || "AltLeft") {
-    e.preventDefault();
-  }
-
-  const svgPressed = document.getElementById(`rect-${keyPressed}`);
-  const textPressed = document.getElementById(`text-${keyPressed}`);
-
-  if (svgPressed) {
-    svgPressed.classList.remove("key-active");
-  }
-  if (textPressed) {
-    textPressed.classList.remove("text-active");
-  }
-};
-
 function Keyboard(props) {
-  document.addEventListener("keydown", handleKeydown);
-  document.addEventListener("keyup", handleKeyup);
-
   const keyboard = React.createRef();
 
   useEffect(() => {
@@ -48,14 +11,46 @@ function Keyboard(props) {
     gsap.to(keyboard.current, { y: 0, duration: 0.5, ease: "bounce.out" });
   }, [keyboard]);
 
+  React.useEffect(() => {
+    document.addEventListener("keydown", handleKeydown);
+    document.addEventListener("keyup", handleKeyup);
+
+    return function cleanup() {
+      document.removeEventListener("keydown", handleKeydown);
+      document.removeEventListener("keyup", handleKeyup);
+    };
+  }, []);
+
+  const handleKeydown = (e) => {
+    const keyPressed = e.code;
+    // if (keyPressed === "Tab" || "AltLeft" || "AltRight") {
+    //   e.preventDefault();
+    // }
+
+    switch (keyPressed) {
+      case "Enter":
+        console.log("Enter");
+        break;
+      case "Minus":
+        props.setActualKey("-");
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleKeyup = (e) => {
+    props.setActualKey("");
+  };
+
   return (
     <section className="keyboard-area">
-      <div className="keyboard" ref={keyboard}>
+      <div className="keyboard" ref={keyboard} onKeyDown={handleKeydown}>
         <svg
           version="1.1"
           id="keyboard"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 340 120"
+          viewBox="0 0 338 120"
           style={{ enableBackground: "new 0 0 612 792" }}
         >
           <style>
@@ -78,14 +73,16 @@ function Keyboard(props) {
             <g id="key-minus">
               <path
                 id="rect-Minus"
-                className="st0"
+                className={`st0 ${props.actualKey === "-" ? "key-active" : ""}`}
                 d="M271.24,25.57h-14.19c-1.1,0-2-0.9-2-2V9.38c0-1.1,0.9-2,2-2h14.19c1.1,0,2,0.9,2,2v14.19
 			C273.24,24.67,272.35,25.57,271.24,25.57z"
               />
               <text
                 id="text-Minus"
                 transform="matrix(1 0 0 1 262.817 18.8789)"
-                className="st1 st2"
+                className={`st1 st2 ${
+                  props.actualKey === "-" ? "text-active" : ""
+                }`}
               >
                 -
               </text>
