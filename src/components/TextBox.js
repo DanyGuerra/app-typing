@@ -3,7 +3,9 @@ import "../styles/Textbox.scss";
 function TextBox() {
   return (
     <>
-      <div className="textbox"></div>
+      <section className="textbox-area">
+        <div className="textbox"></div>
+      </section>
     </>
   );
 }

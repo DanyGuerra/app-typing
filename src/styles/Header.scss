@@ -1,11 +1,11 @@
 @use "app";
 
-#nav {
+header {
   background-color: app.$black-theme1;
   padding: 1rem;
   .navbar {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 
     ul {
@@ -34,6 +34,10 @@
     }
 
     .links {
+      ul {
+        display: flex;
+        column-gap: 1.5rem;
+      }
       a {
         color: app.$ligth-color;
       }

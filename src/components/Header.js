@@ -2,7 +2,7 @@ import "../styles/Header.scss";
 
 function Header() {
   return (
-    <div id="nav">
+    <header>
       <nav className="navbar">
         <div className="navbar-header">
           <a href="/" className="logo-name">
@@ -10,7 +10,7 @@ function Header() {
             Typing App
           </a>
         </div>
-        <div class="links">
+        <div className="links">
           <ul>
             <li>
               <a href="/">Comencemos</a>
@@ -38,7 +38,7 @@ function Header() {
           </ul>
         </div>
       </nav>
-    </div>
+    </header>
   );
 }
 

@@ -1,8 +1,13 @@
 @use "app";
 
-.textbox {
-  background-color: app.$black-theme2;
-  border-radius: 5px;
-  width: 500px;
-  height: 200px;
+.textbox-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .textbox {
+    width: 80%;
+    height: 20vw;
+    background-color: app.$black-theme2;
+    border-radius: 5px;
+  }
 }
