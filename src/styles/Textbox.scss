@@ -1,8 +1,8 @@
 @use "app";
 
 .textbox {
-  background-color: app.$primary-color;
-  border: solid black 1px;
+  background-color: app.$black-theme2;
+  border-radius: 5px;
   width: 500px;
   height: 200px;
 }

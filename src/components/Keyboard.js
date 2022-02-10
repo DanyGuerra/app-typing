@@ -2,7 +2,7 @@ import React from "react";
 import { gsap } from "gsap";
 import { useEffect } from "react";
 
-document.addEventListener("keydown", (e) => {
+const handleKeydown = (e) => {
   const keyPressed = e.code;
   if (keyPressed === "Tab" || "AltLeft") {
     e.preventDefault();
@@ -17,9 +17,9 @@ document.addEventListener("keydown", (e) => {
   if (textPressed) {
     textPressed.classList.add("text-active");
   }
-});
+};
 
-document.addEventListener("keyup", (e) => {
+const handleKeyup = (e) => {
   const keyPressed = e.code;
   if (keyPressed === "Tab" || "AltLeft") {
     e.preventDefault();
@@ -34,15 +34,19 @@ document.addEventListener("keyup", (e) => {
   if (textPressed) {
     textPressed.classList.remove("text-active");
   }
-});
+};
 
 function Keyboard(props) {
+  document.addEventListener("keydown", handleKeydown);
+  document.addEventListener("keyup", handleKeyup);
+
   const keyboard = React.createRef();
 
   useEffect(() => {
     gsap.set(keyboard.current, { y: -50 });
     gsap.to(keyboard.current, { y: 0, duration: 0.5, ease: "bounce.out" });
-  }, []);
+  }, [keyboard]);
+
   return (
     <div className="keyboard" ref={keyboard}>
       <svg

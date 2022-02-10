@@ -1,12 +1,12 @@
 import "../styles/App.scss";
-import Keyboard from "./Keyboard";
-import TextBox from "./TextBox";
+import TypingPlay from "./TypingPlay";
+import Header from "./Header";
 
 function App() {
   return (
     <>
-      <TextBox />
-      <Keyboard colorKeyActived={"#502888"} colorTextActived={"#fffbfe"} />
+      <Header />
+      <TypingPlay />
     </>
   );
 }
