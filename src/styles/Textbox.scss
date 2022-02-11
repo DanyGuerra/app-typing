@@ -5,9 +5,15 @@
   justify-content: center;
   align-items: center;
   .textbox {
+    padding: 10%;
     width: 80%;
-    height: 500px;
+    height: 20px;
     background-color: app.$black-theme2;
     border-radius: 5px;
+    span {
+      margin-right: 0.2rem;
+      color: app.$ligth-color;
+      border-bottom: solid white 1px;
+    }
   }
 }
