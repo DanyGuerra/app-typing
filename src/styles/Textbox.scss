@@ -10,10 +10,17 @@
     height: 20px;
     background-color: app.$black-theme2;
     border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem;
     span {
-      margin-right: 0.2rem;
+      // margin-right: 0.2rem;
       color: app.$ligth-color;
       border-bottom: solid white 1px;
+    }
+    .space {
+      // background-color: red;
+      width: 0.5rem;
     }
   }
 }

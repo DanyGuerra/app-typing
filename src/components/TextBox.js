@@ -5,9 +5,15 @@ function TextBox({ actualText }) {
     <>
       <section className="textbox-area">
         <div className="textbox">
-          {actualText.map((item, index) => (
-            <span key={index}>{item}</span>
-          ))}
+          {actualText.map((item, index) =>
+            item === " " ? (
+              <span className="space" key={index}>
+                {item}
+              </span>
+            ) : (
+              <span key={index}>{item}</span>
+            )
+          )}
         </div>
       </section>
     </>
