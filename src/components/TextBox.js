@@ -22,7 +22,8 @@ function TextBox({ actualText }) {
 
     if (item === " ") {
       classType = "space";
-    } else if (index === actualText.length - 1) {
+    }
+    if (index === actualText.length - 1) {
       isLastLetter = true;
     }
 
@@ -31,7 +32,11 @@ function TextBox({ actualText }) {
         <span className={`${classType}`} key={index}>
           {item}
         </span>
-        {isLastLetter ? <span className="cursor"></span> : ""}
+        {isLastLetter ? (
+          <span key={`cursor-${index}`} className="cursor"></span>
+        ) : (
+          <></>
+        )}
       </>
     );
   };

@@ -30,6 +30,7 @@ function Keyboard({
   const deleteLastItem = (array) => {
     const output = array;
     output.splice(-1, 1);
+    console.log(output);
     return output;
   };
 
