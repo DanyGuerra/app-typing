@@ -1,23 +1,22 @@
 @use "app";
 
 .textbox-area {
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   .textbox {
-    padding: 10%;
+    padding: 5%;
     width: 80%;
-    height: 20px;
+    height: 100px;
     background-color: app.$black-theme2;
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     gap: 0.1rem;
-    // text-align: center;
     span {
-      // margin-right: 0.2rem;
-      font-size: 25px;
-      // width: 1rem;
+      display: inline-block;
+      // font-size: 20px;
       height: 2rem;
       color: app.$ligth-color;
       border-bottom: solid white 1px;
@@ -26,6 +25,9 @@
     .space {
       width: 0.5rem;
       height: 2rem;
+    }
+    .cursor {
+      border-right: solid white 1px;
     }
   }
 }
