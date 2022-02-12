@@ -29,8 +29,7 @@ function Keyboard({
 
   const deleteLastItem = (array) => {
     const output = array;
-    output.splice(-1, 1);
-    console.log(output);
+    output.pop();
     return output;
   };
 
@@ -271,7 +270,7 @@ function Keyboard({
         break;
       case "Backspace":
         setActualKey("Backspace");
-        setActualText((current) => deleteLastItem(current));
+        setActualText((current) => [...deleteLastItem(current)]);
         break;
       case "Space":
         setActualKey(" ");
