@@ -1,6 +1,6 @@
 import "../styles/Textbox.scss";
 import React, { useEffect } from "react";
-import gsap from "gsap";
+// import gsap from "gsap";
 
 function TextBox({ actualText }) {
   // useEffect(() => {
@@ -19,6 +19,7 @@ function TextBox({ actualText }) {
   const textState = (item, index) => {
     let classType = "";
     let isLastLetter = false;
+    let isEmpty = false;
 
     if (item === " ") {
       classType = "space";
