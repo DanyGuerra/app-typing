@@ -7,17 +7,19 @@ function TypingPlay() {
   const [actualText, setActualText] = React.useState([]);
 
   useEffect(() => {
-    initialTyping(["H", "o", "l", "a"]);
+    let str = "Bienvenido a Typing App...";
+    let arr = str.split("");
+    playTyping(arr);
   }, []);
 
-  const initialTyping = (message) => {
+  const playTyping = (message) => {
     let offset = 0;
     message.map((letter) => {
       setTimeout(() => {
         setActualText((c) => c.concat([letter]));
-      }, 0 + offset);
+      }, 100 + offset);
 
-      offset += 500;
+      offset += 100;
     });
   };
 
