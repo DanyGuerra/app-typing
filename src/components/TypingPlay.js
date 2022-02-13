@@ -7,9 +7,7 @@ function TypingPlay() {
   const [actualText, setActualText] = React.useState([]);
 
   useEffect(() => {
-    let str = "Bienvenido a Typing App...";
-    let arr = str.split("");
-    playTyping(arr);
+    welcomeMessage();
   }, []);
 
   const playTyping = (message) => {
@@ -17,10 +15,18 @@ function TypingPlay() {
     message.map((letter) => {
       setTimeout(() => {
         setActualText((c) => c.concat([letter]));
-      }, 100 + offset);
+        setActualKey(letter.toLowerCase());
+      }, 200 + offset);
 
-      offset += 100;
+      offset += 200;
     });
+  };
+
+  const welcomeMessage = () => {
+    let str = "Bienvenido a Typing App...";
+    let arrMessage = str.split("");
+    arrMessage.push("");
+    playTyping(arrMessage);
   };
 
   return (
