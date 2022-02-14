@@ -7,19 +7,24 @@ function TypingPlay() {
   const [actualText, setActualText] = React.useState([]);
 
   const welcomeMessage = () => {
-    let introMessage = "Holaa";
+    let introMessage = "Bienvenido a Typing App ...";
     let arrMessage = introMessage.split("");
     let outputMessage = [];
     arrMessage.map((item) => {
       outputMessage = outputMessage.concat([item, ""]);
     });
-    playTyping(outputMessage);
+    let awaitMessage = playTyping(outputMessage);
+    console.log(awaitMessage);
+    return awaitMessage;
   };
-  useEffect(() => {
-    welcomeMessage();
 
-    document.addEventListener("keydown", handleKeydown);
-    document.addEventListener("keyup", handleKeyup);
+  useEffect(() => {
+    let p1 = welcomeMessage();
+
+    p1.then(() => {
+      document.addEventListener("keydown", handleKeydown);
+      document.addEventListener("keyup", handleKeyup);
+    });
 
     return function cleanup() {
       document.removeEventListener("keydown", handleKeydown);
@@ -29,14 +34,26 @@ function TypingPlay() {
 
   const playTyping = (message) => {
     let offset = 0;
-    message.map((letter) => {
-      setTimeout(() => {
-        setActualText((c) => c.concat([letter]));
-        setActualKey(letter.toLowerCase());
-      }, 100 + offset);
+    let finishWelcome;
 
-      offset += 100;
+    message.map((letter, index) => {
+      finishWelcome = new Promise((resolve) => {
+        setTimeout(() => {
+          setActualText((c) => c.concat([letter]));
+          setActualKey(letter.toLowerCase());
+          if (index === message.length - 1) {
+            resolve("ok");
+          }
+        }, 100 + offset);
+      });
+      if (index % 2 === 0) {
+        offset += 100;
+      } else {
+        offset += 30;
+      }
     });
+
+    return finishWelcome;
   };
 
   const deleteLastItem = (array) => {

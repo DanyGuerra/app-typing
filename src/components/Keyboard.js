@@ -4,9 +4,6 @@ import "../styles/Keyboard.scss";
 
 function Keyboard({
   actualKey,
-  actualText,
-  setActualKey,
-  setActualText,
   colorKeyActived,
   colorTextActived,
   handleKeydown,
