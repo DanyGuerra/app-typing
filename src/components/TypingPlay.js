@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Keyboard from "./Keyboard";
 import TextBox from "./TextBox";
 
-function TypingPlay() {
+function TypingPlay({ welTextFinished, setWelTextFinished }) {
   const [actualKey, setActualKey] = React.useState("");
   const [actualText, setActualText] = React.useState([]);
 
@@ -21,8 +21,7 @@ function TypingPlay() {
     let p1 = welcomeMessage();
 
     p1.then(() => {
-      document.addEventListener("keydown", handleKeydown);
-      document.addEventListener("keyup", handleKeyup);
+      setWelTextFinished(true);
     });
 
     return function cleanup() {
@@ -32,7 +31,6 @@ function TypingPlay() {
   }, []);
 
   const playTyping = (message) => {
-    console.log(message);
     let offset = 0;
     let finishWelcome;
 
@@ -317,9 +315,16 @@ function TypingPlay() {
 
   return (
     <>
-      <TextBox actualText={actualText} />
+      <TextBox
+        actualText={actualText}
+        welTextFinished={welTextFinished}
+        handleKeydown={handleKeydown}
+        handleKeyup={handleKeyup}
+        setWelTextFinished={setWelTextFinished}
+        setActualText={setActualText}
+      />
       <Keyboard
-        colorKeyActived={"#502888"}
+        colorKeyActived={"#ee0b90"}
         colorTextActived={"#fffbfe"}
         setActualKey={setActualKey}
         actualKey={actualKey}

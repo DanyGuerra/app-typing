@@ -2,7 +2,14 @@ import "../styles/Textbox.scss";
 import React, { useEffect } from "react";
 // import gsap from "gsap";
 
-function TextBox({ actualText }) {
+function TextBox({
+  actualText,
+  welTextFinished,
+  setWelTextFinished,
+  handleKeydown,
+  handleKeyup,
+  setActualText,
+}) {
   // useEffect(() => {
   //   let tl = gsap.timeline({ repeat: -1 });
 
@@ -16,6 +23,15 @@ function TextBox({ actualText }) {
   //   });
   // }, [lastLetter]);
 
+  const addListener = () => {
+    document.addEventListener("keydown", handleKeydown);
+    document.addEventListener("keyup", handleKeyup);
+    setWelTextFinished(false);
+
+    const typeSomething = "Escribe Algo";
+    setActualText(typeSomething.split(""));
+  };
+
   const textState = (item, index) => {
     let classType = "";
     let isLastLetter = false;
@@ -27,18 +43,17 @@ function TextBox({ actualText }) {
       isLastLetter = true;
     }
     if (item === "" && isLastLetter) {
-      console.log("sdfgasdf");
-      return <span key={`cursor-${index}`} className="cursor"></span>;
+      return <span key={`empty${index}`} className="cursor"></span>;
     } else if (item === "") {
       return;
     } else {
       return (
         <>
-          <span className={`${classType}`} key={index}>
+          <span key={`type${index}`} className={`${classType}`}>
             {item}
           </span>
           {isLastLetter ? (
-            <span key={`cursor-${index}`} className="cursor"></span>
+            <span key={`cursor${index}`} className="cursor"></span>
           ) : (
             <></>
           )}
@@ -51,6 +66,11 @@ function TextBox({ actualText }) {
     <>
       <section className="textbox-area">
         <div className="textbox">{actualText.map(textState)}</div>
+        {welTextFinished ? (
+          <button onClick={addListener}>Intentalo!!</button>
+        ) : (
+          <></>
+        )}
       </section>
     </>
   );
