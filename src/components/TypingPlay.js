@@ -14,7 +14,6 @@ function TypingPlay() {
       outputMessage = outputMessage.concat([item, ""]);
     });
     let awaitMessage = playTyping(outputMessage);
-    console.log(awaitMessage);
     return awaitMessage;
   };
 
@@ -33,6 +32,7 @@ function TypingPlay() {
   }, []);
 
   const playTyping = (message) => {
+    console.log(message);
     let offset = 0;
     let finishWelcome;
 

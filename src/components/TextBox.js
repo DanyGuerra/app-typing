@@ -19,7 +19,6 @@ function TextBox({ actualText }) {
   const textState = (item, index) => {
     let classType = "";
     let isLastLetter = false;
-    let isEmpty = false;
 
     if (item === " ") {
       classType = "space";
@@ -27,19 +26,25 @@ function TextBox({ actualText }) {
     if (index === actualText.length - 1) {
       isLastLetter = true;
     }
-
-    return (
-      <>
-        <span className={`${classType}`} key={index}>
-          {item}
-        </span>
-        {isLastLetter ? (
-          <span key={`cursor-${index}`} className="cursor"></span>
-        ) : (
-          <></>
-        )}
-      </>
-    );
+    if (item === "" && isLastLetter) {
+      console.log("sdfgasdf");
+      return <span key={`cursor-${index}`} className="cursor"></span>;
+    } else if (item === "") {
+      return;
+    } else {
+      return (
+        <>
+          <span className={`${classType}`} key={index}>
+            {item}
+          </span>
+          {isLastLetter ? (
+            <span key={`cursor-${index}`} className="cursor"></span>
+          ) : (
+            <></>
+          )}
+        </>
+      );
+    }
   };
 
   return (
