@@ -1,5 +1,5 @@
 import "../styles/Textbox.scss";
-import React, { useEffect } from "react";
+import React from "react";
 // import gsap from "gsap";
 
 function TextBox({
@@ -9,6 +9,7 @@ function TextBox({
   handleKeydown,
   handleKeyup,
   setActualText,
+  isEmpty,
 }) {
   // useEffect(() => {
   //   let tl = gsap.timeline({ repeat: -1 });
@@ -28,8 +29,9 @@ function TextBox({
     document.addEventListener("keyup", handleKeyup);
     setWelTextFinished(false);
 
-    const typeSomething = "Escribe Algo";
-    setActualText(typeSomething.split(""));
+    // const typeSomething = "Escribe Algo...";
+    // setActualText(typeSomething.split(""));
+    setActualText([]);
   };
 
   const textState = (item, index) => {
@@ -42,10 +44,11 @@ function TextBox({
     if (index === actualText.length - 1) {
       isLastLetter = true;
     }
+
     if (item === "" && isLastLetter) {
       return <span key={`empty${index}`} className="cursor"></span>;
     } else if (item === "") {
-      return;
+      return <></>;
     } else {
       return (
         <>
@@ -65,7 +68,10 @@ function TextBox({
   return (
     <>
       <section className="textbox-area">
-        <div className="textbox">{actualText.map(textState)}</div>
+        <div className="textbox">
+          {isEmpty ? <span className="cursor"></span> : <></>}
+          {actualText.map(textState)}
+        </div>
         {welTextFinished ? (
           <button onClick={addListener}>Intentalo!!</button>
         ) : (

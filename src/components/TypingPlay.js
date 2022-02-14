@@ -5,6 +5,7 @@ import TextBox from "./TextBox";
 function TypingPlay({ welTextFinished, setWelTextFinished }) {
   const [actualKey, setActualKey] = React.useState("");
   const [actualText, setActualText] = React.useState([]);
+  const [isEmpty, setIsEmpty] = React.useState(false);
 
   const welcomeMessage = () => {
     let introMessage = "Bienvenido a Typing App ...";
@@ -29,6 +30,14 @@ function TypingPlay({ welTextFinished, setWelTextFinished }) {
       document.removeEventListener("keyup", handleKeyup);
     };
   }, []);
+
+  useEffect(() => {
+    if (actualText.length === 0) {
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+    }
+  });
 
   const playTyping = (message) => {
     let offset = 0;
@@ -322,6 +331,7 @@ function TypingPlay({ welTextFinished, setWelTextFinished }) {
         handleKeyup={handleKeyup}
         setWelTextFinished={setWelTextFinished}
         setActualText={setActualText}
+        isEmpty={isEmpty}
       />
       <Keyboard
         colorKeyActived={"#ee0b90"}
