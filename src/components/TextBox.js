@@ -9,7 +9,6 @@ function TextBox({
   handleKeydown,
   handleKeyup,
   setActualText,
-  isEmpty,
 }) {
   // useEffect(() => {
   //   let tl = gsap.timeline({ repeat: -1 });
@@ -69,7 +68,7 @@ function TextBox({
     <>
       <section className="textbox-area">
         <div className="textbox">
-          {isEmpty ? <span className="cursor"></span> : <></>}
+          {actualText.length === 0 ? <span className="cursor"></span> : <></>}
           {actualText.map(textState)}
         </div>
         {welTextFinished ? (
