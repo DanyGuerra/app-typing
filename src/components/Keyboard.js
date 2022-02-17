@@ -1,6 +1,5 @@
 import React from "react";
 // import { gsap } from "gsap";
-import "../styles/Keyboard.scss";
 
 function Keyboard({
   actualKey,

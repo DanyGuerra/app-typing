@@ -1,4 +1,3 @@
-import "../styles/Textbox.scss";
 import React from "react";
 // import gsap from "gsap";
 
