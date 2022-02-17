@@ -3,12 +3,14 @@ import TypingPlay from "./TypingPlay";
 import Header from "./Header";
 import Footer from "./Footer";
 import PrimaryButton, { SecondaryButton, TertiaryButton } from "./Buttons";
+import { GlobalStyle } from "../utils";
 
 function App() {
   const [welTextFinished, setWelTextFinished] = React.useState(false);
 
   return (
     <>
+      <GlobalStyle />
       <Header />
       <TypingPlay
         welTextFinished={welTextFinished}

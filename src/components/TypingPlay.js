@@ -324,8 +324,6 @@ function TypingPlay({ welTextFinished, setWelTextFinished }) {
         setActualText={setActualText}
       />
       <Keyboard
-        colorKeyActived={"#ee0b90"}
-        colorTextActived={"#fffbfe"}
         setActualKey={setActualKey}
         actualKey={actualKey}
         actualText={actualText}

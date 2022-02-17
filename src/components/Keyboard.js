@@ -1,4 +1,5 @@
 import React from "react";
+import { defaultTheme, typeScale } from "../utils";
 // import { gsap } from "gsap";
 
 function Keyboard({
@@ -36,16 +37,16 @@ function Keyboard({
           <style>
             {`
             .st0{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
-            .st1{font-family:'Open Sans';}
-            .st2{font-size:10px;}
+            .st1{font-family:'Roboto Mono';}
+            .st2{font-size:8px;}
             .st3{stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
             .st4{font-size:5px;}
             .st5{font-size:7px;}
             .key-active{
-              fill:${colorKeyActived};
+              fill:${defaultTheme.primaryColor};
             }
             .text-active{
-              fill:${colorTextActived};
+              fill:${defaultTheme.textColor};
             }
           `}
           </style>
