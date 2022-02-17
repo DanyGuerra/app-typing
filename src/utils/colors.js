@@ -1,9 +1,9 @@
 export const primaryBlue = {
-  100: "#3a36e0",
-  200: "#0804b8",
-  300: "#030086",
-  400: "#5f25a4",
-  500: "#050449",
+  100: "#EFC8FF",
+  200: "#E59EFF",
+  300: "#A837CE",
+  400: "#491A59",
+  500: "#5f25a4",
 };
 
 export const successGreen = {
