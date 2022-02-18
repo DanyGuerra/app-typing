@@ -1,9 +1,67 @@
 import styled from "styled-components";
-import { typeScale } from "../utils";
+// import { typeScale } from "../utils";
+import { PrimaryButton, SecondaryButton } from "./Buttons";
 
-function Header() {
+const HeaderWrapper = styled.header`
+  background-color: ${(props) => props.theme.backgroundInvertedColor};
+  padding: 1rem;
+  color: red;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li {
+        display: inline-block;
+
+        a {
+          display: block;
+          padding: 6px 12px;
+          text-decoration: none;
+          color: ${(props) => props.theme.neutralCien};
+        }
+      }
+    }
+    .navbar-header {
+      a {
+        color: ${(props) => props.theme.neutralCien};
+        display: block;
+        padding: 6px 12px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    }
+
+    .links {
+      ul {
+        display: flex;
+        column-gap: 1.5rem;
+      }
+    }
+
+    .buttons {
+      ul {
+        display: flex;
+        align-items: center;
+        justify-conetent: center;
+        li {
+          padding: 0.2rem;
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+`;
+
+function Header({ setUseDarkTheme }) {
   return (
-    <header>
+    <HeaderWrapper>
       <nav className="navbar">
         <div className="navbar-header">
           <a href="/" className="logo-name">
@@ -27,19 +85,32 @@ function Header() {
         <div className="buttons">
           <ul>
             <li>
-              <a className="button-login" href="/">
-                Iniciar Sesion
-              </a>
+              {" "}
+              <SecondaryButton
+                modifiers={["small"]}
+                onClick={() => setUseDarkTheme(true)}
+              >
+                Dark Theme
+              </SecondaryButton>
             </li>
             <li>
-              <a className="button-sigup" href="/">
-                Registrarse
-              </a>
+              <SecondaryButton
+                modifiers={["small"]}
+                onClick={() => setUseDarkTheme(false)}
+              >
+                Ligth Theme
+              </SecondaryButton>
+            </li>
+            <li>
+              <PrimaryButton> Iniciar Sesion</PrimaryButton>
+            </li>
+            <li>
+              <PrimaryButton> Registrarse</PrimaryButton>
             </li>
           </ul>
         </div>
       </nav>
-    </header>
+    </HeaderWrapper>
   );
 }
 

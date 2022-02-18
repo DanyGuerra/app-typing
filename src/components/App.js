@@ -14,14 +14,7 @@ function App() {
   return (
     <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
       <GlobalStyle />
-      <PrimaryButton onClick={() => setUseDarkTheme(true)}>
-        Dark Theme
-      </PrimaryButton>
-      <PrimaryButton onClick={() => setUseDarkTheme(false)}>
-        Ligth Theme
-      </PrimaryButton>
-
-      <Header />
+      <Header setUseDarkTheme={setUseDarkTheme} />
       <TypingPlay
         welTextFinished={welTextFinished}
         setWelTextFinished={setWelTextFinished}

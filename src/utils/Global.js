@@ -20,10 +20,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a{
-  color:${(props) => props.theme.textColor}
-}
-
 main {
   width: 90%;
   margin: 0 auto;

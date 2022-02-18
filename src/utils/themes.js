@@ -2,7 +2,9 @@ import { primaryBlue, neutral, green, yellow, red } from "./colors";
 import { primaryFont } from "./typography";
 
 export const defaultTheme = {
+  neutralCien: neutral[100],
   backgroundColor: neutral[100],
+  backgroundInvertedColor: primaryBlue[500],
   primaryColor: primaryBlue[300],
   primaryHoverColor: primaryBlue[200],
   primaryActiveColor: primaryBlue[100],
@@ -26,13 +28,15 @@ export const defaultTheme = {
 };
 
 export const darkTheme = {
+  neutralCien: neutral[100],
   backgroundColor: primaryBlue[500],
+  backgroundInvertedColor: primaryBlue[400],
   primaryColor: neutral[100],
   primaryHoverColor: neutral[200],
   primaryActiveColor: neutral[300],
   textColorOnPrimary: primaryBlue[300],
   textColor: neutral[100],
-  textColorInverted: neutral[500],
+  textColorInverted: neutral[600],
   primaryFont: primaryFont,
   disabled: neutral[400],
   textOnDisabled: neutral[300],
