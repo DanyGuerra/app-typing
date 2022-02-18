@@ -1,4 +1,5 @@
 import React from "react";
+import { PrimaryButton } from "./Buttons";
 // import gsap from "gsap";
 
 function TextBox({
@@ -71,7 +72,12 @@ function TextBox({
           {actualText.map(textState)}
         </div>
         {welTextFinished ? (
-          <button onClick={addListener}>Intentalo!!</button>
+          <PrimaryButton
+            modifiers={["large", "success", "primaryButtonSuccess"]}
+            onClick={addListener}
+          >
+            Intentalo!!
+          </PrimaryButton>
         ) : (
           <></>
         )}

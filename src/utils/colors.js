@@ -3,22 +3,22 @@ export const primaryBlue = {
   200: "#E59EFF",
   300: "#A837CE",
   400: "#491A59",
-  500: "#5f25a4",
+  500: "#1D0924",
 };
 
-export const successGreen = {
+export const green = {
   100: "#529e66",
   200: "#367b48",
   300: "#276738",
 };
 
-export const warningYellow = {
+export const yellow = {
   100: "#e1c542",
   200: "#cab23f",
   300: "#b49e35",
 };
 
-export const errorRed = {
+export const red = {
   100: "#d0454c",
   200: "#b54248",
   300: "#95353a",

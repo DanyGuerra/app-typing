@@ -1,3 +1,6 @@
+import styled from "styled-components";
+import { typeScale } from "../utils";
+
 function Header() {
   return (
     <header>

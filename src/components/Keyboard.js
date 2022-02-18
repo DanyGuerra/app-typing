@@ -1,13 +1,7 @@
 import React from "react";
-import { defaultTheme, typeScale } from "../utils";
 // import { gsap } from "gsap";
 
-function Keyboard({
-  actualKey,
-  colorKeyActived,
-  colorTextActived,
-  handleKeydown,
-}) {
+function Keyboard({ actualKey, handleKeydown }) {
   const keyboard = React.createRef();
 
   // useEffect(() => {
@@ -36,17 +30,17 @@ function Keyboard({
         >
           <style>
             {`
-            .st0{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
+            .st0{fill:none;stroke:#000;stroke-width:0.25;stroke-miterlimit:10;}
             .st1{font-family:'Roboto Mono';}
-            .st2{font-size:8px;}
+            .st2{font-size:9px;}
             .st3{stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
             .st4{font-size:5px;}
             .st5{font-size:7px;}
             .key-active{
-              fill:${defaultTheme.primaryColor};
+              fill:#fff;
             }
             .text-active{
-              fill:${defaultTheme.textColor};
+              fill:#000;
             }
           `}
           </style>

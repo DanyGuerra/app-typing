@@ -1,12 +1,14 @@
-import { createGlobalStyle } from "styled-components";
 import { primaryFont } from "./typography";
 import { normalize } from "polished";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 ${normalize()}
 html {
   box-sizing: border-box;
   font-size: 16px;
+  background-color:${(props) => props.theme.backgroundColor};
+  color:${(props) => props.theme.textColor}
 }
 *, *:before, *:after {
   box-sizing: inherit;
