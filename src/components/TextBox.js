@@ -1,6 +1,40 @@
 import React from "react";
 import { PrimaryButton } from "./Buttons";
+import styled from "styled-components";
+import { typeScale } from "../utils";
 // import gsap from "gsap";
+
+const TextboxArea = styled.section`
+  font-size: ${typeScale.header1};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  .textbox {
+    padding: 5%;
+    width: 80%;
+    height: 100px;
+    background-color: app.$black-theme2;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem;
+    span {
+      display: inline-block;
+      height: 2rem;
+      color: app.$ligth-color;
+    }
+
+    .space {
+      width: 0.5rem;
+      height: 2rem;
+    }
+    .cursor {
+      border-right: solid ${(props) => props.theme.textColor} 1px;
+    }
+  }
+`;
 
 function TextBox({
   actualText,
@@ -66,7 +100,7 @@ function TextBox({
 
   return (
     <>
-      <section className="textbox-area">
+      <TextboxArea>
         <div className="textbox">
           {actualText.length === 0 ? <span className="cursor"></span> : <></>}
           {actualText.map(textState)}
@@ -81,7 +115,7 @@ function TextBox({
         ) : (
           <></>
         )}
-      </section>
+      </TextboxArea>
     </>
   );
 }

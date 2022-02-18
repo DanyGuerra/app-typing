@@ -1,6 +1,18 @@
 import React, { useEffect } from "react";
 import Keyboard from "./Keyboard";
 import TextBox from "./TextBox";
+import styled from "styled-components";
+
+const KeyboardSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .keyboard {
+    width: 80%;
+  }
+`;
 
 function TypingPlay({ welTextFinished, setWelTextFinished }) {
   const [actualKey, setActualKey] = React.useState("");
@@ -323,14 +335,18 @@ function TypingPlay({ welTextFinished, setWelTextFinished }) {
         setWelTextFinished={setWelTextFinished}
         setActualText={setActualText}
       />
-      <Keyboard
-        setActualKey={setActualKey}
-        actualKey={actualKey}
-        actualText={actualText}
-        setActualText={setActualText}
-        handleKeydown={handleKeydown}
-        handleKeyup={handleKeyup}
-      />
+      <KeyboardSection>
+        <div className="keyboard">
+          <Keyboard
+            setActualKey={setActualKey}
+            actualKey={actualKey}
+            actualText={actualText}
+            setActualText={setActualText}
+            handleKeydown={handleKeydown}
+            handleKeyup={handleKeyup}
+          />
+        </div>
+      </KeyboardSection>
     </>
   );
 }

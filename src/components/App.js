@@ -19,9 +19,7 @@ function App() {
         welTextFinished={welTextFinished}
         setWelTextFinished={setWelTextFinished}
       />
-      <PrimaryButton>Click Here</PrimaryButton>
-      <SecondaryButton>Click Here</SecondaryButton>
-      <TertiaryButton>Click Here</TertiaryButton>
+
       <Footer />
     </ThemeProvider>
   );
