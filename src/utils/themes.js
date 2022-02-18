@@ -2,7 +2,7 @@ import { primaryBlue, neutral, green, yellow, red } from "./colors";
 import { primaryFont } from "./typography";
 
 export const defaultTheme = {
-  backgroundColor: primaryBlue[100],
+  backgroundColor: neutral[100],
   primaryColor: primaryBlue[300],
   primaryHoverColor: primaryBlue[200],
   primaryActiveColor: primaryBlue[100],
