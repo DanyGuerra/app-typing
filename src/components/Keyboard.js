@@ -36,10 +36,11 @@ const KeyboardWrapper = styled.svg`
   .key-active {
     fill: ${(props) => props.theme.primaryColor};
   }
-  .key-active + text {
+  .text-active {
     fill: ${(props) => props.theme.textColorInverted};
+    stroke: ${(props) => props.theme.textColorInverted};
   }
-  .key-active + g > line {
+  .key-active + text {
     fill: ${(props) => props.theme.textColorInverted};
   }
 `;
@@ -103,14 +104,18 @@ function Keyboard({ actualKey, handleKeydown }) {
           />
           <g id="text-Backspace">
             <line
-              className="st3"
+              className={`st3 ${
+                actualKey === "Backspace" ? "text-active" : ""
+              }`}
               x1="305.23"
               y1="16.35"
               x2="325.23"
               y2="16.35"
             />
             <polygon
-              className="st3"
+              className={`st3 ${
+                actualKey === "Backspace" ? "text-active" : ""
+              }`}
               points="303.33,16.31 305.23,15.15 305.23,17.56 			"
             />
           </g>
