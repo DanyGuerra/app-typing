@@ -36,8 +36,11 @@ const KeyboardWrapper = styled.svg`
   .key-active {
     fill: ${(props) => props.theme.primaryColor};
   }
-  .text-active {
-    fill: #000;
+  .key-active + text {
+    fill: ${(props) => props.theme.textColorInverted};
+  }
+  .key-active + g > line {
+    fill: ${(props) => props.theme.textColorInverted};
   }
 `;
 
@@ -71,7 +74,7 @@ function Keyboard({ actualKey, handleKeydown }) {
           <text
             id="text-Minus"
             transform="matrix(1 0 0 1 262.817 18.8789)"
-            className={`st1 st2 ${actualKey === "-" ? "text-active" : ""}`}
+            className="st1 st2"
           >
             -
           </text>
@@ -284,7 +287,7 @@ function Keyboard({ actualKey, handleKeydown }) {
         <g id="key-single-quote">
           <path
             id="rect-Quote"
-            className={`st0 ${actualKey === "Quote" ? "key-active" : ""}`}
+            className={`st0 ${actualKey === "'" ? "key-active" : ""}`}
             d="M280.34,68.89h-14.19c-1.1,0-2-0.9-2-2V52.7c0-1.1,0.9-2,2-2h14.19c1.1,0,2,0.9,2,2v14.19
 			C282.34,68,281.44,68.89,280.34,68.89z"
           />
