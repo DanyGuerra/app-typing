@@ -4,6 +4,8 @@ import { primaryFont } from "./typography";
 export const defaultTheme = {
   neutralCien: neutral[100],
   backgroundColor: neutral[100],
+  formElementBackground: neutral[100],
+  textOnFormElementBackground: neutral[600],
   backgroundInvertedColor: primaryBlue[500],
   primaryColor: primaryBlue[300],
   primaryHoverColor: primaryBlue[200],
@@ -28,6 +30,8 @@ export const defaultTheme = {
 };
 
 export const darkTheme = {
+  formElementBackground: primaryBlue[100],
+  textOnFormElementBackground: neutral[100],
   neutralCien: neutral[100],
   backgroundColor: primaryBlue[500],
   backgroundInvertedColor: primaryBlue[400],
