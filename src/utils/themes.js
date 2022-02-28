@@ -36,7 +36,7 @@ export const darkTheme = {
   backgroundColor: primaryBlue[500],
   backgroundInvertedColor: primaryBlue[400],
   primaryColor: primaryBlue[100],
-  primaryHoverColor: primaryBlue[600],
+  primaryHoverColor: primaryBlue[300],
   primaryActiveColor: primaryBlue[100],
   textColorOnPrimary: primaryBlue[600],
   textColor: neutral[100],
