@@ -30,15 +30,15 @@ export const defaultTheme = {
 };
 
 export const darkTheme = {
-  formElementBackground: primaryBlue[100],
+  formElementBackground: primaryBlue[400],
   textOnFormElementBackground: neutral[100],
   neutralCien: neutral[100],
   backgroundColor: primaryBlue[500],
   backgroundInvertedColor: primaryBlue[400],
-  primaryColor: neutral[100],
-  primaryHoverColor: neutral[200],
-  primaryActiveColor: neutral[300],
-  textColorOnPrimary: primaryBlue[300],
+  primaryColor: primaryBlue[100],
+  primaryHoverColor: primaryBlue[600],
+  primaryActiveColor: primaryBlue[100],
+  textColorOnPrimary: primaryBlue[600],
   textColor: neutral[100],
   textColorInverted: neutral[600],
   primaryFont: primaryFont,

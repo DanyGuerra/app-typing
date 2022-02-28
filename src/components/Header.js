@@ -102,10 +102,10 @@ function Header({ setUseDarkTheme }) {
               </SecondaryButton>
             </li>
             <li>
-              <PrimaryButton> Iniciar Sesion</PrimaryButton>
+              <PrimaryButton>Iniciar Sesion</PrimaryButton>
             </li>
             <li>
-              <PrimaryButton> Registrarse</PrimaryButton>
+              <PrimaryButton>Registrarse</PrimaryButton>
             </li>
           </ul>
         </div>
