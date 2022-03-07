@@ -42,6 +42,7 @@ const KeyboardWrapper = styled.svg`
   }
   .key-active + text {
     fill: ${(props) => props.theme.textColorInverted};
+    stroke: ${(props) => props.theme.textColorInverted};
   }
 `;
 

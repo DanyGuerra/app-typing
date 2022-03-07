@@ -37,8 +37,8 @@ const CloseModalButton = styled.button`
   position: absolute;
   top: 40px;
   right: 40px;
-  width: 50px;
-  height: 50px;
+  width: 38px;
+  height: 38px;
   padding: 0;
 `;
 const SignUpModal = () => {

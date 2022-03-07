@@ -74,6 +74,7 @@ function TypingPlay({ welTextFinished, setWelTextFinished }) {
 
   const handleKeydown = (e) => {
     const keyPressed = e.code;
+    e.preventDefault();
 
     switch (keyPressed) {
       case "Digit0":

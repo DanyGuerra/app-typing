@@ -4,8 +4,12 @@ import styled from "styled-components";
 const CloseIconWrapper = styled.svg`
   width: 100%;
   height: 100%;
+  &:hover {
+    fill: ${(props) => props.theme.primaryColor};
+  }
+
   path {
-    fill: ${(props) => props.theme.textColor};
+    fill: ${(props) => props.theme.primaryColorInverted};
   }
 `;
 
