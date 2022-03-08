@@ -32,7 +32,7 @@ const TextboxArea = styled.section`
       height: 2rem;
     }
     .cursor {
-      border-right: solid ${(props) => props.theme.textColor} 1px;
+      border-right: solid ${(props) => props.theme.textColor} 2px;
     }
   }
 `;
@@ -61,10 +61,15 @@ function TextBox({
   const animationCursor = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 },
-    loop: { reverse: true },
+    loop: true,
     config: {
-      duration: 500,
+      duration: 750,
     },
+  });
+
+  const animationText = useSpring({
+    from: { opacity: 0, transform: "translateY(-100%)" },
+    to: { opacity: 1, transform: "translateY(0%)" },
   });
 
   const addListener = () => {
@@ -101,9 +106,13 @@ function TextBox({
     } else {
       return (
         <>
-          <span key={`type${index}`} className={`${classType}`}>
+          <animated.span
+            key={`type${index}`}
+            className={`${classType}`}
+            style={animationText}
+          >
             {item}
-          </span>
+          </animated.span>
           {isLastLetter ? (
             <animated.span
               key={`cursor${index}`}
