@@ -1,6 +1,6 @@
 import styled from "styled-components";
 // import { typeScale } from "../utils";
-import { PrimaryButton, SecondaryButton } from "./Buttons";
+import { PrimaryButton, SwitchButton } from "./Buttons";
 
 const HeaderWrapper = styled.header`
   background-color: ${(props) => props.theme.backgroundInvertedColor};
@@ -59,7 +59,7 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-function Header({ setUseDarkTheme }) {
+function Header({ setUseDarkTheme, useDarkTheme }) {
   return (
     <HeaderWrapper>
       <nav className="navbar">
@@ -85,22 +85,13 @@ function Header({ setUseDarkTheme }) {
         <div className="buttons">
           <ul>
             <li>
-              {" "}
-              <SecondaryButton
-                modifiers={["small"]}
-                onClick={() => setUseDarkTheme(true)}
-              >
-                Dark Theme
-              </SecondaryButton>
+              <SwitchButton
+                color={(props) => props.theme.primaryHoverColor}
+                setUseDarkTheme={setUseDarkTheme}
+                useDarkTheme={useDarkTheme}
+              />
             </li>
-            <li>
-              <SecondaryButton
-                modifiers={["small"]}
-                onClick={() => setUseDarkTheme(false)}
-              >
-                Ligth Theme
-              </SecondaryButton>
-            </li>
+
             <li>
               <PrimaryButton>Iniciar Sesion</PrimaryButton>
             </li>

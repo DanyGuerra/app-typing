@@ -30,9 +30,6 @@ const KeyboardWrapper = styled.svg`
     stroke-miterlimit: 10;
     fill: ${(props) => props.theme.textColor};
   }
-  .st5 {
-    font-size: 7px;
-  }
   .key-active {
     fill: ${(props) => props.theme.primaryColor};
   }
@@ -319,7 +316,7 @@ function Keyboard({ actualKey, handleKeydown }) {
           <text
             id="text-IntlBackslash"
             transform="matrix(1 0 0 1 250.0754 104.9239)"
-            className="st1 st5"
+            className="st1 st2"
           >
             \
           </text>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { PrimaryButton } from "./Buttons";
 import styled from "styled-components";
 import { typeScale } from "../utils";
 // import gsap from "gsap";
+import { useSpring, animated } from "react-spring";
 
 const TextboxArea = styled.section`
   font-size: ${typeScale.header1};
@@ -57,6 +58,15 @@ function TextBox({
   //   });
   // }, [lastLetter]);
 
+  const animationCursor = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    loop: { reverse: true },
+    config: {
+      duration: 500,
+    },
+  });
+
   const addListener = () => {
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("keyup", handleKeyup);
@@ -79,7 +89,13 @@ function TextBox({
     }
 
     if (item === "" && isLastLetter) {
-      return <span key={`empty${index}`} className="cursor"></span>;
+      return (
+        <animated.span
+          key={`empty${index}`}
+          className="cursor"
+          style={animationCursor}
+        ></animated.span>
+      );
     } else if (item === "") {
       return <></>;
     } else {
@@ -89,7 +105,11 @@ function TextBox({
             {item}
           </span>
           {isLastLetter ? (
-            <span key={`cursor${index}`} className="cursor"></span>
+            <animated.span
+              key={`cursor${index}`}
+              className="cursor"
+              style={animationCursor}
+            ></animated.span>
           ) : (
             <></>
           )}
@@ -102,7 +122,14 @@ function TextBox({
     <>
       <TextboxArea>
         <div className="textbox">
-          {actualText.length === 0 ? <span className="cursor"></span> : <></>}
+          {actualText.length === 0 ? (
+            <animated.span
+              className="cursor"
+              style={animationCursor}
+            ></animated.span>
+          ) : (
+            <></>
+          )}
           {actualText.map(textState)}
         </div>
         {welTextFinished ? (

@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
       <GlobalStyle />
-      <Header setUseDarkTheme={setUseDarkTheme} />
+      <Header setUseDarkTheme={setUseDarkTheme} useDarkTheme={useDarkTheme} />
       <TypingPlay
         welTextFinished={welTextFinished}
         setWelTextFinished={setWelTextFinished}
