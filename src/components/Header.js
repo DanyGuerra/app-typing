@@ -72,13 +72,10 @@ function Header({ setUseDarkTheme, useDarkTheme }) {
         <div className="links">
           <ul>
             <li>
-              <a href="/">Comencemos</a>
+              <a href="/">Inicio</a>
             </li>
             <li>
-              <a href="/">Lecciones</a>
-            </li>
-            <li>
-              <a href="/">Acerca de</a>
+              <a href="/lessons">Lecciones</a>
             </li>
           </ul>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { PrimaryButton } from "./Buttons";
 import styled from "styled-components";
 import { typeScale } from "../utils";
