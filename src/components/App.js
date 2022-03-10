@@ -7,6 +7,8 @@ import { ThemeProvider } from "styled-components";
 import { defaultTheme, darkTheme } from "../utils";
 import Home from "./Home";
 import Lessons from "./Lessons";
+import NotFound from "./NotFound";
+import TypingGame from "./TypingGame";
 // import SignUpModal from "./Modal";
 
 function App() {
@@ -30,7 +32,9 @@ function App() {
             }
           />
 
-          <Route path="lessons" element={<Lessons />} />
+          <Route path="lessons" element={<Lessons />}></Route>
+          <Route path="lessons/:id" element={<TypingGame />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </ThemeProvider>

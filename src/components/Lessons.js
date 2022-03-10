@@ -1,19 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useSpring, animated } from "react-spring";
+import { typeScale } from "../utils";
+import { primaryFont } from "../utils";
+import { useParams, useNavigate } from "react-router-dom";
+import Lesson from "./Lesson";
 
 const lessons = [
-  {
-    name: "Leccion 1",
-  },
-  {
-    name: "Leccion 2",
-  },
-  {
-    name: "Leccion 3",
-  },
-  {
-    name: "Leccion 4",
-  },
+  { id: 124, number: 1, name: "Leccion 1" },
+  { id: 12414, number: 2, name: "Leccion 2" },
+  { id: 1244, number: 3, name: "Leccion 3" },
+  { id: 1241514, number: 4, name: "Leccion 4" },
+  { id: 16514, number: 5, name: "Leccion 5" },
 ];
 
 const LessonsStyle = styled.section`
@@ -30,99 +28,47 @@ const LessonsStyle = styled.section`
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 50px;
   }
-  .card {
+
+  button {
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 150px;
     height: 150px;
+    color: ${(props) => props.theme.textColor};
+    font-family:
+    font-size: ${typeScale.header1};
     background-color: ${(props) => props.theme.backgroundColor};
     border: solid ${(props) => props.theme.textColorNeutral} 2px;
     border-radius: 0.5rem;
     &:hover {
-      cursor: pointer;
       box-shadow: 0 5px 16px ${(props) => props.theme.shadow};
+      cursor: pointer;
+    }
+    &:focus {
+      outline: 3px solid ${(props) => props.theme.primaryHoverColor};
+      outline-offset: 2px;
     }
   }
 `;
 
 function Lessons() {
+  let params = useParams();
+
+  const animationLessons = useSpring({
+    from: { opacity: 0, transform: "translateX(30%)" },
+    to: { opacity: 1, transform: "translateX(0%)" },
+  });
+
+  const listLessons = lessons.map((lesson, index) => (
+    <Lesson id={lesson.id} lesson={lesson}></Lesson>
+  ));
+
   return (
     <LessonsStyle>
-      <div className="wrapper">
-        <div className="card">
-          <h1> 1 </h1>
-        </div>
-        <div className="card">
-          <h1> 2 </h1>
-        </div>
-        <div className="card">
-          <h1> 3 </h1>
-        </div>
-        <div className="card">
-          <h1> 4 </h1>
-        </div>
-        <div className="card">
-          <h1> 5 </h1>
-        </div>
-        <div className="card">
-          <h1> 6 </h1>
-        </div>
-        <div className="card">
-          <h1> 7 </h1>
-        </div>
-        <div className="card">
-          <h1> 8 </h1>
-        </div>
-        <div className="card">
-          <h1> 9 </h1>
-        </div>
-        <div className="card">
-          <h1> 10 </h1>
-        </div>
-        <div className="card">
-          <h1> 11 </h1>
-        </div>
-        <div className="card">
-          <h1> 12 </h1>
-        </div>
-        <div className="card">
-          <h1> 13 </h1>
-        </div>
-        <div className="card">
-          <h1> 14 </h1>
-        </div>
-        <div className="card">
-          <h1> 15 </h1>
-        </div>
-        <div className="card">
-          <h1> 16 </h1>
-        </div>
-        <div className="card">
-          <h1> 17 </h1>
-        </div>
-        <div className="card">
-          <h1> 18 </h1>
-        </div>
-        <div className="card">
-          <h1> 19 </h1>
-        </div>
-        <div className="card">
-          <h1> 20 </h1>
-        </div>
-        <div className="card">
-          <h1> 21 </h1>
-        </div>
-        <div className="card">
-          <h1> 22 </h1>
-        </div>
-        <div className="card">
-          <h1> 23 </h1>
-        </div>
-        <div className="card">
-          <h1> 24 </h1>
-        </div>
-      </div>
+      <animated.div style={animationLessons} className="wrapper">
+        {listLessons}
+      </animated.div>
     </LessonsStyle>
   );
 }
