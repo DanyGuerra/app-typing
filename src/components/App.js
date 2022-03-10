@@ -35,25 +35,6 @@ function App() {
         <Footer />
       </ThemeProvider>
     </Router>
-
-    //  <Router>
-    //       <Header />
-    //         <Route exact path="/" component={Home} />
-    //         <Route path="/agregar-celular" component={RegistrarCelular} />
-    //         <Route path="/todos-los-celulares" component={CelularesList} />
-    //         <Route path="/marca/:marca" component={FiltroMarca} />
-    //         <Route path="/so/:so" component={FiltroSO} />
-    //         <Route path="/ram/:ram" component={FiltroRam} />
-    //         <Route
-    //           path="/details/:id"
-    //           render={(props) => <CelularDetalle {...props} />}
-    //         />
-    //         <Route
-    //             path="/modificarcelular/:id"
-    //             render={(props) => <ModificarCelular {...props} />}
-    //         />
-    //         <Route path="*" component={NotFound} />
-    //     </Router>
   );
 }
 
