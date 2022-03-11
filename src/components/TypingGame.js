@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Keyboard from "./Keyboard";
-import TextBoxGame from "./TextBoxPlay";
+import TextBoxGame from "./TextBoxGame";
 import styled from "styled-components";
 import { PrimaryButton } from "./Buttons";
 
@@ -9,10 +9,10 @@ const KeyboardSection = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 
   .keyboard {
-    width: 80%;
+    width: 50%;
   }as
 `;
 
@@ -304,13 +304,13 @@ function TypingGame({}) {
 
   return (
     <>
-      <TextBoxGame
-        actualText={actualText}
-        handleKeydown={handleKeydown}
-        handleKeyup={handleKeyup}
-        setActualText={setActualText}
-      />
       <KeyboardSection>
+        <TextBoxGame
+          actualText={actualText}
+          handleKeydown={handleKeydown}
+          handleKeyup={handleKeyup}
+          setActualText={setActualText}
+        />
         <PrimaryButton onClick={handleStart}> Iniciar</PrimaryButton>
         <div className="keyboard">
           <Keyboard

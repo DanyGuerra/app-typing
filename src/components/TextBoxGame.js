@@ -6,15 +6,14 @@ import { typeScale } from "../utils";
 import { useSpring, animated } from "react-spring";
 
 const TextboxArea = styled.section`
-  font-size: ${typeScale.header1};
+  font-size: ${typeScale.header2};
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 300px;
+  width: 50%;
   .textbox {
     padding: 5%;
-    width: 80%;
     height: 100px;
     background-color: app.$black-theme2;
     border-radius: 5px;
