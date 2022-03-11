@@ -7,11 +7,38 @@ import { useParams, useNavigate } from "react-router-dom";
 import Lesson from "./Lesson";
 
 const lessons = [
-  { id: 124, number: 1, name: "Leccion 1" },
-  { id: 12414, number: 2, name: "Leccion 2" },
-  { id: 1244, number: 3, name: "Leccion 3" },
-  { id: 1241514, number: 4, name: "Leccion 4" },
-  { id: 16514, number: 5, name: "Leccion 5" },
+  { id: 12473462, number: 1, name: "Leccion 1" },
+  { id: 124141, number: 2, name: "Leccion 2" },
+  { id: 124412341234, number: 3, name: "Leccion 3" },
+  { id: 1241514890, number: 4, name: "Leccion 4" },
+  { id: 165141235, number: 5, name: "Leccion 5" },
+  { id: 12467845, number: 6, name: "Leccion 1" },
+  { id: 1241423461, number: 7, name: "Leccion 2" },
+  { id: 12441053, number: 8, name: "Leccion 3" },
+  { id: 12415140862, number: 9, name: "Leccion 4" },
+  { id: 1651495785, number: 10, name: "Leccion 5" },
+  { id: 1240578, number: 11, name: "Leccion 1" },
+  { id: 124143243572, number: 12, name: "Leccion 2" },
+  { id: 12449732598, number: 13, name: "Leccion 3" },
+  { id: 124151409876, number: 14, name: "Leccion 4" },
+  { id: 12651423, number: 15, name: "Leccion 5" },
+  { id: 122416801, number: 16, name: "Leccion 1" },
+  { id: 1214414, number: 17, name: "Leccion 2" },
+  { id: 12440987, number: 18, name: "Leccion 3" },
+  { id: 12415142347, number: 19, name: "Leccion 4" },
+  { id: 1651487698765, number: 20, name: "Leccion 5" },
+  { id: 1242379876, number: 21, name: "Leccion 1" },
+  { id: 1241499764, number: 22, name: "Leccion 2" },
+  { id: 124409876, number: 23, name: "Leccion 3" },
+  { id: 124151409, number: 24, name: "Leccion 4" },
+  { id: 16514098637, number: 25, name: "Leccion 5" },
+  { id: 124085235, number: 26, name: "Leccion 1" },
+  { id: 12414023501, number: 27, name: "Leccion 2" },
+  { id: 1244151095, number: 28, name: "Leccion 3" },
+  { id: 124151413450980, number: 29, name: "Leccion 4" },
+  { id: 1651409234509, number: 30, name: "Leccion 5" },
+  { id: 1651409132509, number: 31, name: "Leccion 5" },
+  { id: 1651417356745, number: 32, name: "Leccion 5" },
 ];
 
 const LessonsStyle = styled.section`
@@ -61,7 +88,7 @@ function Lessons() {
   });
 
   const listLessons = lessons.map((lesson, index) => (
-    <Lesson id={lesson.id} lesson={lesson}></Lesson>
+    <Lesson id={lesson.id} key={lesson.id} lesson={lesson}></Lesson>
   ));
 
   return (

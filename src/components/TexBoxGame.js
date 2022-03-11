@@ -37,7 +37,7 @@ const TextboxArea = styled.section`
   }
 `;
 
-function TextBox({
+function TextBoxGame({
   actualText,
   welTextFinished,
   setWelTextFinished,
@@ -77,8 +77,6 @@ function TextBox({
     document.addEventListener("keyup", handleKeyup);
     setWelTextFinished(false);
 
-    // const typeSomething = "Escribe Algo...";
-    // setActualText(typeSomething.split(""));
     setActualText([]);
   };
 
@@ -156,4 +154,4 @@ function TextBox({
   );
 }
 
-export default TextBox;
+export default TextBoxGame;

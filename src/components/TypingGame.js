@@ -1,33 +1,46 @@
 import React, { useEffect } from "react";
 import Keyboard from "./Keyboard";
-import TextBox from "./TextBox";
+import TextBoxGame from "./TextBoxPlay";
 import styled from "styled-components";
-import { useParams, useNavigate } from "react-router-dom";
+import { PrimaryButton } from "./Buttons";
 
 const KeyboardSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 
   .keyboard {
     width: 80%;
   }as
 `;
 
-function TypingGame({ welTextFinished, setWelTextFinished }) {
+function TypingGame({}) {
   const [actualKey, setActualKey] = React.useState("");
   const [actualText, setActualText] = React.useState([]);
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKeydown);
-    document.addEventListener("keyup", handleKeyup);
-
+    setActualText(
+      textToArray(
+        "ff jj ff jj ff jj fj fj jf jf fj fjfjfjfjjfjfjf este es el contenido de esta leccion"
+      )
+    );
     return function cleanup() {
       document.removeEventListener("keydown", handleKeydown);
       document.removeEventListener("keyup", handleKeyup);
     };
   }, []);
+
+  const textToArray = (content) => {
+    let arrMessage = content.split("");
+    return arrMessage;
+  };
+
+  const handleStart = () => {
+    document.addEventListener("keydown", handleKeydown);
+    document.addEventListener("keyup", handleKeyup);
+  };
 
   const deleteLastItem = (array) => {
     const output = array;
@@ -291,15 +304,14 @@ function TypingGame({ welTextFinished, setWelTextFinished }) {
 
   return (
     <>
-      <TextBox
+      <TextBoxGame
         actualText={actualText}
-        welTextFinished={welTextFinished}
         handleKeydown={handleKeydown}
         handleKeyup={handleKeyup}
-        setWelTextFinished={setWelTextFinished}
         setActualText={setActualText}
       />
       <KeyboardSection>
+        <PrimaryButton onClick={handleStart}> Iniciar</PrimaryButton>
         <div className="keyboard">
           <Keyboard
             setActualKey={setActualKey}

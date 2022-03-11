@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Keyboard from "./Keyboard";
-import TextBox from "./TextBox";
+import TextBoxPlay from "./TextBoxPlay";
 import styled from "styled-components";
 
 const KeyboardSection = styled.section`
@@ -328,7 +328,7 @@ function TypingPlay({ welTextFinished, setWelTextFinished }) {
 
   return (
     <>
-      <TextBox
+      <TextBoxPlay
         actualText={actualText}
         welTextFinished={welTextFinished}
         handleKeydown={handleKeydown}
