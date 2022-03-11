@@ -30,33 +30,15 @@ const TextboxArea = styled.section`
       width: 0.5rem;
       height: 2rem;
     }
-    .cursor {
-      border-right: solid ${(props) => props.theme.textColor} 2px;
+
+    .activeLetter {
+      background-color: ${(props) => props.theme.primaryColor};
+      color: ${(props) => props.theme.neutralCien};
     }
   }
 `;
 
-function TextBoxGame({
-  actualText,
-  welTextFinished,
-  setWelTextFinished,
-  handleKeydown,
-  handleKeyup,
-  setActualText,
-}) {
-  // useEffect(() => {
-  //   let tl = gsap.timeline({ repeat: -1 });
-
-  //   tl.set(lastLetter.current, {
-  //     backgroundColor: "rgba(1, 1, 1, 0)",
-  //     duration: 1,
-  //   });
-  //   tl.to(lastLetter.current, {
-  //     backgroundColor: "rgba(1, 1, 1, 1)",
-  //     duration: 1,
-  //   });
-  // }, [lastLetter]);
-
+function TextBoxGame({ actualText, indexLetter }) {
   const animationCursor = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 },
@@ -70,14 +52,6 @@ function TextBoxGame({
     from: { opacity: 0, transform: "translateY(-100%)" },
     to: { opacity: 1, transform: "translateY(0%)" },
   });
-
-  const addListener = () => {
-    document.addEventListener("keydown", handleKeydown);
-    document.addEventListener("keyup", handleKeyup);
-    setWelTextFinished(false);
-
-    setActualText([]);
-  };
 
   const textState = (item, index) => {
     let classType = "";
@@ -105,20 +79,13 @@ function TextBoxGame({
         <>
           <animated.span
             key={`type${index}`}
-            className={`${classType}`}
+            className={`${classType} ${
+              index === indexLetter ? "activeLetter" : ""
+            }`}
             style={animationText}
           >
             {item}
           </animated.span>
-          {isLastLetter ? (
-            <animated.span
-              key={`cursor${index}`}
-              className="cursor"
-              style={animationCursor}
-            ></animated.span>
-          ) : (
-            <></>
-          )}
         </>
       );
     }
@@ -138,16 +105,6 @@ function TextBoxGame({
           )}
           {actualText.map(textState)}
         </div>
-        {welTextFinished ? (
-          <PrimaryButton
-            modifiers={["large", "success", "primaryButtonSuccess"]}
-            onClick={addListener}
-          >
-            Intentalo!!
-          </PrimaryButton>
-        ) : (
-          <></>
-        )}
       </TextboxArea>
     </>
   );
