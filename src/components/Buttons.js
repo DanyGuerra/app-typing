@@ -117,7 +117,7 @@ export const TertiaryButton = styled(Button)`
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `;
 
-export const SwitchButton = ({ setUseDarkTheme, color, useDarkTheme }) => {
+export const SwitchButton = ({ setUseDarkTheme, useDarkTheme }) => {
   return (
     <Switch>
       <Input type="checkbox" defaultChecked={useDarkTheme} />
@@ -133,7 +133,7 @@ const Slider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${(props) => props.theme.neutralCien};
+  background-color: ${(props) => props.theme.toggleBackground};
   border-radius: 15px;
   transition: 0.4s;
 
@@ -148,7 +148,7 @@ const Slider = styled.span`
     height: 20px;
     border-radius: 100%;
 
-    background-color: ${(props) => props.theme.primaryColor};
+    background-color: ${(props) => props.theme.toggle};
 
     transition: 0.4s;
   }
@@ -165,7 +165,7 @@ const Switch = styled.label`
   display: inline-block;
   width: 48px;
   height: 24px;
-  background-color: ${({ toggle, color }) => (toggle ? color : "white")};
+  background-color: none;
   border-radius: 15px;
   transition: 0.4s;
 

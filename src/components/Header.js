@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import { typeScale } from "../utils";
 import { PrimaryButton, SwitchButton } from "./Buttons";
 
 const HeaderWrapper = styled.header`
@@ -83,7 +82,6 @@ function Header({ setUseDarkTheme, useDarkTheme }) {
           <ul>
             <li>
               <SwitchButton
-                color={(props) => props.theme.primaryHoverColor}
                 setUseDarkTheme={setUseDarkTheme}
                 useDarkTheme={useDarkTheme}
               />

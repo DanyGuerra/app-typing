@@ -33,7 +33,7 @@ function App() {
           />
 
           <Route path="lessons" element={<Lessons />}></Route>
-          <Route path="lessons/:id" element={<TypingGame />} />
+          <Route path="lessons/:lessonId" element={<TypingGame />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

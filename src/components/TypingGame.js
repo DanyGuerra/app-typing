@@ -3,6 +3,7 @@ import Keyboard from "./Keyboard";
 import TextBoxGame from "./TextBoxGame";
 import styled from "styled-components";
 import { PrimaryButton } from "./Buttons";
+import { useParams } from "react-router";
 
 const KeyboardSection = styled.section`
   display: flex;
@@ -19,6 +20,9 @@ const KeyboardSection = styled.section`
 function TypingGame({}) {
   const [actualKey, setActualKey] = React.useState("");
   const [actualText, setActualText] = React.useState([]);
+  const [isStarted, setIsStarted] = React.useState(false);
+
+  let { lessonId } = useParams();
 
   useEffect(() => {
     setActualText(
@@ -38,6 +42,7 @@ function TypingGame({}) {
   };
 
   const handleStart = () => {
+    setIsStarted(true);
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("keyup", handleKeyup);
   };
@@ -311,7 +316,11 @@ function TypingGame({}) {
           handleKeyup={handleKeyup}
           setActualText={setActualText}
         />
-        <PrimaryButton onClick={handleStart}> Iniciar</PrimaryButton>
+        {isStarted ? (
+          <></>
+        ) : (
+          <PrimaryButton onClick={handleStart}> Iniciar</PrimaryButton>
+        )}
         <div className="keyboard">
           <Keyboard
             setActualKey={setActualKey}
@@ -322,6 +331,7 @@ function TypingGame({}) {
             handleKeyup={handleKeyup}
           />
         </div>
+        <h1>This is the lesson Id: {lessonId}</h1>
       </KeyboardSection>
     </>
   );
