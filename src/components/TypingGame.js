@@ -23,15 +23,16 @@ function TypingGame({}) {
   const [actualToPressed, setActualToPressed] = React.useState("");
   const [actualText, setActualText] = React.useState([]);
   const [isStarted, setIsStarted] = React.useState(false);
-  const [isMatching, setIsMatching] = React.useState(false);
+  const [hits, setHits] = React.useState(0);
   const [isGameEnded, setIsGameEnded] = React.useState(false);
   const [indexLetter, setIndexLetter] = React.useState(0);
   const [errorCounter, setErrorCounter] = React.useState(0);
+  const [isMatching, setIsMatching] = React.useState(false);
 
   let { lessonId } = useParams();
 
   useEffect(() => {
-    setActualText(textToArray("mi nombre es luis daniel ramirez guerra"));
+    setActualText(textToArray("hola, mas texto"));
     return cleanup;
   }, []);
 
@@ -49,16 +50,41 @@ function TypingGame({}) {
     return arrMessage;
   };
 
+  const gamePracticeLogic = () => {
+    setActualToPressed(actualText[indexLetter]);
+
+    if (indexLetter === actualText.length) {
+      setIsGameEnded(true);
+    } else if (actualText[indexLetter] === actualKey) {
+      if (isMatching) {
+        setHits((prev) => prev + 1);
+      }
+      setIndexLetter((prev) => prev + 1);
+      setIsMatching(true);
+    } else if (actualKey !== "") {
+      setIsMatching(false);
+      setErrorCounter((prev) => prev + 1);
+    }
+  };
+
   const gameLogic = () => {
     setActualToPressed(actualText[indexLetter]);
 
     if (indexLetter === actualText.length) {
       setIsGameEnded(true);
     } else if (actualText[indexLetter] === actualKey) {
+      if (isMatching) {
+        setHits((prev) => prev + 1);
+      }
       setIsMatching(true);
-      setIndexLetter((indexLetter) => indexLetter + 1);
-    } else if (actualKey !== "" && isMatching === false) {
-      setErrorCounter((errorCounter) => errorCounter + 1);
+    } else if (actualKey !== "") {
+      setIsMatching(false);
+      setErrorCounter((prev) => prev + 1);
+    }
+
+    if (actualKey != "") {
+      setIndexLetter((prev) => prev + 1);
+      setIsMatching(true);
     }
   };
 
@@ -67,6 +93,7 @@ function TypingGame({}) {
     setActualToPressed(actualText[0]);
     setErrorCounter(0);
     setIsGameEnded(false);
+    setHits(0);
   };
 
   const handleStart = () => {
@@ -296,6 +323,9 @@ function TypingGame({}) {
   return (
     <>
       <KeyboardSection>
+        <h2>Total: {actualText.length}</h2>
+        <h2>Errores: {errorCounter}</h2>
+        <h2>Buenas: {hits}</h2>
         <TextBoxGame
           actualText={actualText}
           handleKeydown={handleKeydown}
