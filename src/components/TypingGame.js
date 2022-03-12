@@ -31,9 +31,7 @@ function TypingGame({}) {
   let { lessonId } = useParams();
 
   useEffect(() => {
-    setActualText(
-      textToArray("este es mi ejemplo de como poder escribir mas rapido")
-    );
+    setActualText(textToArray("mi nombre es luis daniel ramirez guerra"));
     return cleanup;
   }, []);
 
@@ -44,7 +42,7 @@ function TypingGame({}) {
 
   useEffect(() => {
     gameLogic();
-  }, [actualKey, actualToPressed]);
+  }, [actualKey]);
 
   const textToArray = (content) => {
     let arrMessage = content.split("");
@@ -59,10 +57,8 @@ function TypingGame({}) {
     } else if (actualText[indexLetter] === actualKey) {
       setIsMatching(true);
       setIndexLetter((indexLetter) => indexLetter + 1);
-    } else if (isMatching === false) {
+    } else if (actualKey !== "" && isMatching === false) {
       setErrorCounter((errorCounter) => errorCounter + 1);
-    } else {
-      setIsMatching(false);
     }
   };
 
@@ -70,6 +66,7 @@ function TypingGame({}) {
     setIndexLetter(0);
     setActualToPressed(actualText[0]);
     setErrorCounter(0);
+    setIsGameEnded(false);
   };
 
   const handleStart = () => {
@@ -86,6 +83,11 @@ function TypingGame({}) {
 
   const handleKeydown = (e) => {
     const keyPressed = e.code;
+    const repeat = e.repeat;
+    if (repeat) {
+      setActualKey("");
+      return;
+    }
     e.preventDefault();
 
     switch (keyPressed) {
@@ -301,17 +303,18 @@ function TypingGame({}) {
           setActualText={setActualText}
           indexLetter={indexLetter}
         />
-        {isStarted ? (
-          <></>
-        ) : (
-          <>
-            <PrimaryButton onClick={handleStart}> Iniciar</PrimaryButton>
-          </>
-        )}
-        <SecondaryButton modifiers={["small"]} onClick={handleRestart}>
-          {" "}
-          Reiniciar{" "}
-        </SecondaryButton>
+        <div>
+          {isStarted ? (
+            <></>
+          ) : (
+            <>
+              <PrimaryButton onClick={handleStart}> Iniciar</PrimaryButton>
+            </>
+          )}
+          <SecondaryButton onClick={handleRestart}> Reiniciar </SecondaryButton>
+
+          {isGameEnded ? <PrimaryButton>Siguiente</PrimaryButton> : <></>}
+        </div>
         <div className="keyboard">
           <KeyboardGame
             setActualKey={setActualKey}
