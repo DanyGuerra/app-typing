@@ -21,7 +21,7 @@ const KeyboardSection = styled.section`
 function TypingGame({}) {
   const [actualKey, setActualKey] = React.useState("");
   const [actualToPressed, setActualToPressed] = React.useState("");
-  const [actualText, setActualText] = React.useState([]);
+  const [actualText, setActualText] = React.useState([""]);
   const [isStarted, setIsStarted] = React.useState(false);
   const [hits, setHits] = React.useState(0);
   const [isGameEnded, setIsGameEnded] = React.useState(false);
@@ -52,6 +52,7 @@ function TypingGame({}) {
 
   const gamePracticeLogic = () => {
     setActualToPressed(actualText[indexLetter]);
+    setIsGameEnded(false);
 
     if (indexLetter === actualText.length) {
       setIsGameEnded(true);
@@ -71,7 +72,7 @@ function TypingGame({}) {
     setActualToPressed(actualText[indexLetter]);
 
     if (indexLetter === actualText.length) {
-      setIsGameEnded(true);
+      handleFinish();
     } else if (actualText[indexLetter] === actualKey) {
       if (isMatching) {
         setHits((prev) => prev + 1);
@@ -82,7 +83,7 @@ function TypingGame({}) {
       setErrorCounter((prev) => prev + 1);
     }
 
-    if (actualKey != "") {
+    if (actualKey !== "") {
       setIndexLetter((prev) => prev + 1);
       setIsMatching(true);
     }
@@ -102,20 +103,27 @@ function TypingGame({}) {
     document.addEventListener("keyup", handleKeyup);
   };
 
-  const deleteLastItem = (array) => {
-    const output = array;
-    output.pop();
-    return output;
+  const handleFinish = () => {
+    cleanup();
+    setIsStarted(false);
+    setIsGameEnded(true);
   };
+
+  // const deleteLastItem = (array) => {
+  //   const output = array;
+  //   output.pop();
+  //   return output;
+  // };
 
   const handleKeydown = (e) => {
     const keyPressed = e.code;
     const repeat = e.repeat;
+    console.log("hola");
+
     if (repeat) {
       setActualKey("");
       return;
     }
-    e.preventDefault();
 
     switch (keyPressed) {
       case "Digit0":
