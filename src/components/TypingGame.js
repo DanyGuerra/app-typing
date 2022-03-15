@@ -18,32 +18,34 @@ const KeyboardSection = styled.section`
   }as
 `;
 
-function TypingGame({}) {
+const TypingGame = () => {
   const [actualKey, setActualKey] = React.useState("");
-  const [actualToPressed, setActualToPressed] = React.useState("");
-  const [actualText, setActualText] = React.useState([""]);
+  const [actualText, setActualText] = React.useState(["", ""]);
   const [isStarted, setIsStarted] = React.useState(false);
   const [hits, setHits] = React.useState(0);
   const [isGameEnded, setIsGameEnded] = React.useState(false);
   const [indexLetter, setIndexLetter] = React.useState(0);
   const [errorCounter, setErrorCounter] = React.useState(0);
   const [isMatching, setIsMatching] = React.useState(false);
+  const [actualToPressed, setActualToPressed] = React.useState("");
 
   let { lessonId } = useParams();
 
   useEffect(() => {
-    setActualText(textToArray("hola, mas texto"));
+    setActualText(textToArray("mas texto de ejemplo"));
+    setActualToPressed(actualText[0]);
+
     return cleanup;
   }, []);
+
+  useEffect(() => {
+    gameLogic();
+  }, [actualKey]);
 
   const cleanup = () => {
     document.removeEventListener("keydown", handleKeydown);
     document.removeEventListener("keyup", handleKeyup);
   };
-
-  useEffect(() => {
-    gameLogic();
-  }, [actualKey]);
 
   const textToArray = (content) => {
     let arrMessage = content.split("");
@@ -54,8 +56,9 @@ function TypingGame({}) {
     setActualToPressed(actualText[indexLetter]);
     setIsGameEnded(false);
 
-    if (indexLetter === actualText.length) {
-      setIsGameEnded(true);
+    if (indexLetter >= actualText.length) {
+      handleFinish();
+      return;
     } else if (actualText[indexLetter] === actualKey) {
       if (isMatching) {
         setHits((prev) => prev + 1);
@@ -69,10 +72,14 @@ function TypingGame({}) {
   };
 
   const gameLogic = () => {
-    setActualToPressed(actualText[indexLetter]);
+    setActualToPressed("");
+    if (actualText[indexLetter]) {
+      setActualToPressed(actualText[indexLetter]);
+    }
 
     if (indexLetter === actualText.length) {
       handleFinish();
+      return;
     } else if (actualText[indexLetter] === actualKey) {
       if (isMatching) {
         setHits((prev) => prev + 1);
@@ -98,15 +105,16 @@ function TypingGame({}) {
   };
 
   const handleStart = () => {
+    setActualToPressed(actualText[0]);
     setIsStarted(true);
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("keyup", handleKeyup);
   };
 
   const handleFinish = () => {
-    cleanup();
-    setIsStarted(false);
+    // setIsStarted(false);
     setIsGameEnded(true);
+    cleanup();
   };
 
   // const deleteLastItem = (array) => {
@@ -118,7 +126,7 @@ function TypingGame({}) {
   const handleKeydown = (e) => {
     const keyPressed = e.code;
     const repeat = e.repeat;
-    console.log("hola");
+    // e.preventDefault();
 
     if (repeat) {
       setActualKey("");
@@ -317,6 +325,7 @@ function TypingGame({}) {
         break;
       case "Space":
         setActualKey(" ");
+        e.preventDefault();
         break;
 
       default:
@@ -368,6 +377,6 @@ function TypingGame({}) {
       </KeyboardSection>
     </>
   );
-}
+};
 
 export default TypingGame;
