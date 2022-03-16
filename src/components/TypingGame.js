@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Keyboard from "./Keyboard";
 import TextBoxGame from "./TextBoxGame";
 import styled from "styled-components";
-import { PrimaryButton, SecondaryButton } from "./Buttons";
 import { useParams } from "react-router";
 import KeyboardGame from "./KeyBoardGame";
+import GameControls from "./GameControls";
+import GameBoard from "./GameBoard";
 
 const KeyboardSection = styled.section`
   display: flex;
@@ -32,8 +32,14 @@ const TypingGame = () => {
   let { lessonId } = useParams();
 
   useEffect(() => {
-    setActualText(textToArray("mas texto de ejemplo"));
-    setActualToPressed(actualText[0]);
+    setActualText(
+      textToArray(
+        "este es mi texto de ejemplo, ahora son mas palabras que antes, texto de ejemplo"
+      )
+    );
+    setActualToPressed("a");
+    document.addEventListener("keydown", handleKeydown);
+    document.addEventListener("keyup", handleKeyup);
 
     return cleanup;
   }, []);
@@ -101,14 +107,12 @@ const TypingGame = () => {
     setActualToPressed(actualText[0]);
     setErrorCounter(0);
     setIsGameEnded(false);
+    setIsStarted(false);
     setHits(0);
   };
 
   const handleStart = () => {
-    setActualToPressed(actualText[0]);
     setIsStarted(true);
-    document.addEventListener("keydown", handleKeydown);
-    document.addEventListener("keyup", handleKeyup);
   };
 
   const handleFinish = () => {
@@ -127,6 +131,7 @@ const TypingGame = () => {
     const keyPressed = e.code;
     const repeat = e.repeat;
     // e.preventDefault();
+    handleStart();
 
     if (repeat) {
       setActualKey("");
@@ -340,9 +345,6 @@ const TypingGame = () => {
   return (
     <>
       <KeyboardSection>
-        <h2>Total: {actualText.length}</h2>
-        <h2>Errores: {errorCounter}</h2>
-        <h2>Buenas: {hits}</h2>
         <TextBoxGame
           actualText={actualText}
           handleKeydown={handleKeydown}
@@ -350,18 +352,17 @@ const TypingGame = () => {
           setActualText={setActualText}
           indexLetter={indexLetter}
         />
-        <div>
-          {isStarted ? (
-            <></>
-          ) : (
-            <>
-              <PrimaryButton onClick={handleStart}> Iniciar</PrimaryButton>
-            </>
-          )}
-          <SecondaryButton onClick={handleRestart}> Reiniciar </SecondaryButton>
-
-          {isGameEnded ? <PrimaryButton>Siguiente</PrimaryButton> : <></>}
-        </div>
+        <GameBoard
+          total={actualText.length}
+          errorCounter={errorCounter}
+          hits={hits}
+        ></GameBoard>
+        <GameControls
+          isStarted={isStarted}
+          handleStart={handleStart}
+          handleRestart={handleRestart}
+          isGameEnded={isGameEnded}
+        ></GameControls>
         <div className="keyboard">
           <KeyboardGame
             setActualKey={setActualKey}

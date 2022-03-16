@@ -120,7 +120,7 @@ export const TertiaryButton = styled(Button)`
 export const SwitchButton = ({ setUseDarkTheme, useDarkTheme }) => {
   return (
     <Switch>
-      <Input type="checkbox" defaultChecked={useDarkTheme} />
+      <Input type="checkbox" defaultChecked={false} />
       <Slider onClick={() => setUseDarkTheme(!useDarkTheme)}></Slider>
     </Switch>
   );

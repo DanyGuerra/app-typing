@@ -10,11 +10,11 @@ const TextboxArea = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 300px;
-  width: 50%;
+  width: 60%;
+  border-bottom: solid ${(props) => props.theme.textColorNeutral} 1px;
   .textbox {
     padding: 5%;
-    height: 100px;
+    height: 100%;
     background-color: app.$black-theme2;
     border-radius: 5px;
     display: flex;
