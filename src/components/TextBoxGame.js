@@ -3,7 +3,7 @@ import { PrimaryButton } from "./Buttons";
 import styled from "styled-components";
 import { typeScale } from "../utils";
 // import gsap from "gsap";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, easings } from "react-spring";
 
 const TextboxArea = styled.section`
   font-size: ${typeScale.header2};
@@ -11,15 +11,15 @@ const TextboxArea = styled.section`
   flex-direction: column;
   align-items: center;
   width: 60%;
-  border-bottom: solid ${(props) => props.theme.textColorNeutral} 1px;
+
   .textbox {
     padding: 5%;
     height: 100%;
     background-color: app.$black-theme2;
-    border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     gap: 0.1rem;
+    border-bottom: solid ${(props) => props.theme.textColorNeutral} 1px;
     span {
       display: inline-block;
       height: 2rem;
@@ -49,8 +49,14 @@ function TextBoxGame({ actualText, indexLetter }) {
   });
 
   const animationText = useSpring({
-    from: { opacity: 0, transform: "translateY(-100%)" },
+    from: { opacity: 0, transform: "translateY(-30%)" },
     to: { opacity: 1, transform: "translateY(0%)" },
+  });
+
+  const animationTextBox = useSpring({
+    from: { opacity: 0, transform: "translateY(-30%)" },
+    to: { opacity: 1, transform: "translateY(0%)" },
+    config: { duration: 1500, easing: easings.easeOutBounce },
   });
 
   const textState = (item, index) => {
@@ -94,7 +100,7 @@ function TextBoxGame({ actualText, indexLetter }) {
   return (
     <>
       <TextboxArea>
-        <div className="textbox">
+        <animated.div className="textbox" style={animationTextBox}>
           {actualText.length === 0 ? (
             <animated.span
               className="cursor"
@@ -104,7 +110,7 @@ function TextBoxGame({ actualText, indexLetter }) {
             <></>
           )}
           {actualText.map(textState)}
-        </div>
+        </animated.div>
       </TextboxArea>
     </>
   );

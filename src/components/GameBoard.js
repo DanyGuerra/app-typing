@@ -5,9 +5,9 @@ import { typeScale } from "../utils";
 const GameboardWrapper = styled.div`
   display: flex;
   gap: 30px;
-  margin-top: 20px;
+  ${"" /* margin-top: 20px; */}
   .item {
-    font-size: ${typeScale.header2};
+    font-size: ${typeScale.header5};
     display: flex;
     flex-direction: column;
     margin: 0px;

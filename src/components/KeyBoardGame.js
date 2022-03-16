@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, easings } from "react-spring";
 
 const KeyboardWrapper = styled.svg`
   .st0 {
@@ -46,8 +46,9 @@ const KeyboardWrapper = styled.svg`
 
 function KeyboardGame({ actualToPressed }) {
   const animationKeyboard = useSpring({
-    from: { opacity: 0, transform: "translateX(30%)" },
+    from: { opacity: 0, transform: "translateX(10%)" },
     to: { opacity: 1, transform: "translateX(0%)" },
+    config: { duration: 2000, easing: easings.easeOutElastic },
   });
 
   return (
