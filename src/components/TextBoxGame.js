@@ -31,6 +31,13 @@ const TextboxArea = styled.section`
       height: 2rem;
     }
 
+    .is-match {
+      background-color: green;
+    }
+
+    .no-match {
+      background-color: red;
+    }
     .activeLetter {
       background-color: ${(props) => props.theme.primaryColor};
       color: ${(props) => props.theme.neutralCien};
@@ -87,7 +94,7 @@ function TextBoxGame({ actualText, indexLetter }) {
             key={`type${index}`}
             className={`${classType} ${
               index === indexLetter ? "activeLetter" : ""
-            }`}
+            } `}
             style={animationText}
           >
             {item}

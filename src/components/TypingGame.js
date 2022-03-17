@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import KeyboardGame from "./KeyBoardGame";
 import GameControls from "./GameControls";
 import GameBoard from "./GameBoard";
+import StartMessage from "./StartMessage";
 
 const KeyboardSection = styled.section`
   display: flex;
@@ -15,7 +16,7 @@ const KeyboardSection = styled.section`
 
   .keyboard {
     width: 50%;
-  }as
+  }
 `;
 
 const TypingGame = () => {
@@ -37,7 +38,7 @@ const TypingGame = () => {
         "este es mi texto de ejemplo, ahora son mas palabras que antes, texto de ejemplo"
       )
     );
-    setActualToPressed("a");
+    setActualToPressed(actualText[0]);
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("keyup", handleKeyup);
 
@@ -79,6 +80,7 @@ const TypingGame = () => {
 
   const gameLogic = () => {
     setActualToPressed("");
+
     if (actualText[indexLetter]) {
       setActualToPressed(actualText[indexLetter]);
     }
@@ -345,6 +347,7 @@ const TypingGame = () => {
   return (
     <>
       <KeyboardSection>
+        <StartMessage isStarted={isStarted}></StartMessage>
         <TextBoxGame
           actualText={actualText}
           handleKeydown={handleKeydown}
