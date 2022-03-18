@@ -35,7 +35,7 @@ const TypingGame = () => {
   useEffect(() => {
     setActualText(
       textToArray(
-        "este es mi texto de ejemplo, ahora son mas palabras que antes, texto de ejemplo"
+        "este es mi texto de ejemplo, ahora son mas palabras que antes, texto de ejemplo x2"
       )
     );
     setActualToPressed(actualText[0]);

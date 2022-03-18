@@ -4,7 +4,7 @@ import { PrimaryButton, SwitchButton } from "./Buttons";
 const HeaderWrapper = styled.header`
   background-color: ${(props) => props.theme.backgroundInvertedColor};
   padding: 1rem;
-  color: red;
+  z-index: 100;
 
   .navbar {
     display: flex;
@@ -48,7 +48,7 @@ const HeaderWrapper = styled.header`
       ul {
         display: flex;
         align-items: center;
-        justify-conetent: center;
+        justify-content: center;
         li {
           padding: 0.2rem;
           margin-left: 1rem;

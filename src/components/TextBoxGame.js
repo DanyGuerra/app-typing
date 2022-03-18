@@ -13,7 +13,7 @@ const TextboxArea = styled.section`
   width: 60%;
 
   .textbox {
-    padding: 5%;
+    padding: 0 5%;
     height: 100%;
     background-color: app.$black-theme2;
     display: flex;
