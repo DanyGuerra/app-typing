@@ -19,6 +19,7 @@ const TextboxArea = styled.section`
     display: flex;
     flex-wrap: wrap;
     gap: 0.1rem;
+    padding-bottom: 30px;
     border-bottom: solid ${(props) => props.theme.textColorNeutral} 1px;
     span {
       display: inline-block;

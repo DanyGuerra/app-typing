@@ -5,12 +5,16 @@ import { typeScale } from "../utils";
 const GameboardWrapper = styled.div`
   display: flex;
   gap: 30px;
-  ${"" /* margin-top: 20px; */}
   .item {
-    font-size: ${typeScale.header5};
     display: flex;
     flex-direction: column;
     margin: 0px;
+  }
+  .title {
+    font-size: ${typeScale.paragraph};
+  }
+  .value {
+    font-size: ${typeScale.header3};
   }
 `;
 
@@ -18,16 +22,16 @@ function GameBoard({ total, errorCounter, hits }) {
   return (
     <GameboardWrapper>
       <div className="item">
-        <div>Total</div>
-        <div>{total}</div>
+        <div className="title">Total</div>
+        <div className="value">{total}</div>
       </div>
       <div className="item">
-        <div>Errores</div>
-        <div>{errorCounter}</div>
+        <div className="title">Errores</div>
+        <div className="value">{errorCounter}</div>
       </div>
       <div className="item">
-        <div>Buenas</div>
-        <div>{hits}</div>
+        <div className="title">Buenas</div>
+        <div className="value">{hits}</div>
       </div>
     </GameboardWrapper>
   );

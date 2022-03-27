@@ -6,6 +6,7 @@ import KeyboardGame from "./KeyBoardGame";
 import GameControls from "./GameControls";
 import GameBoard from "./GameBoard";
 import StartMessage from "./StartMessage";
+import { PrimaryButton } from "./Buttons";
 
 const KeyboardSection = styled.section`
   display: flex;
@@ -30,6 +31,12 @@ const TypingGame = () => {
   const [isMatching, setIsMatching] = React.useState(false);
   const [actualToPressed, setActualToPressed] = React.useState("");
 
+  //Cronometer
+  const [time, setTime] = React.useState(0);
+  const [swActive, setSwActive] = React.useState(false);
+  const [swPaused, setSwPaused] = React.useState(false);
+  let swInterval = null;
+
   let { lessonId } = useParams();
 
   useEffect(() => {
@@ -44,6 +51,44 @@ const TypingGame = () => {
   useEffect(() => {
     gameLogic();
   }, [actualKey]);
+
+  useEffect(() => {
+    let interval;
+
+    if (swPaused) {
+      return;
+    }
+    if (swActive) {
+      interval = setInterval(() => {
+        setTime((prevTime) => prevTime + 10);
+      }, 10);
+    } else if (!swActive) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [swActive, swPaused]);
+
+  //StopWatch
+  const swStart = () => {
+    setSwActive(true);
+  };
+
+  const swPause = () => {
+    setSwPaused(true);
+  };
+
+  const swResume = () => {
+    setSwPaused(false);
+  };
+
+  const swReset = () => {
+    clearInterval(swInterval);
+    setSwActive(false);
+    setSwPaused(false);
+    setTime(0);
+  };
+
+  //StopWatch
 
   const cleanup = () => {
     document.removeEventListener("keydown", handleKeydown);
@@ -362,6 +407,11 @@ const TypingGame = () => {
           handleRestart={handleRestart}
           isGameEnded={isGameEnded}
         ></GameControls>
+        <PrimaryButton onClick={swStart}>Start</PrimaryButton>
+        <PrimaryButton onClick={swPause}>Pause</PrimaryButton>
+        <PrimaryButton onClick={swResume}>Resume</PrimaryButton>
+        <PrimaryButton onClick={swReset}>Stop</PrimaryButton>
+        <div>{time}</div>
         <div className="keyboard">
           <KeyboardGame
             setActualKey={setActualKey}
