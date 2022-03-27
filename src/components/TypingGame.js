@@ -35,7 +35,6 @@ const TypingGame = () => {
   const [time, setTime] = React.useState(0);
   const [swActive, setSwActive] = React.useState(false);
   const [swPaused, setSwPaused] = React.useState(false);
-  let swInterval = null;
 
   let { lessonId } = useParams();
 
@@ -71,6 +70,7 @@ const TypingGame = () => {
   //StopWatch
   const swStart = () => {
     setSwActive(true);
+    setSwPaused(false);
   };
 
   const swPause = () => {
@@ -82,7 +82,6 @@ const TypingGame = () => {
   };
 
   const swReset = () => {
-    clearInterval(swInterval);
     setSwActive(false);
     setSwPaused(false);
     setTime(0);
@@ -152,10 +151,12 @@ const TypingGame = () => {
     setIsGameEnded(false);
     setIsStarted(false);
     setHits(0);
+    swReset();
   };
 
   const handleStart = () => {
     setIsStarted(true);
+    swStart();
   };
 
   const handleFinish = () => {
@@ -406,11 +407,10 @@ const TypingGame = () => {
           handleStart={handleStart}
           handleRestart={handleRestart}
           isGameEnded={isGameEnded}
+          handleSwPause={swPause}
+          swResume={swResume}
+          swPaused={swPaused}
         ></GameControls>
-        <PrimaryButton onClick={swStart}>Start</PrimaryButton>
-        <PrimaryButton onClick={swPause}>Pause</PrimaryButton>
-        <PrimaryButton onClick={swResume}>Resume</PrimaryButton>
-        <PrimaryButton onClick={swReset}>Stop</PrimaryButton>
         <div>{time}</div>
         <div className="keyboard">
           <KeyboardGame
