@@ -52,7 +52,7 @@ const LessonsStyle = styled.section`
     height: 100%;
     padding: 0px 20px;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 50px;
   }
 
@@ -63,8 +63,8 @@ const LessonsStyle = styled.section`
     max-width: 150px;
     height: 150px;
     color: ${(props) => props.theme.textColor};
-    font-family:
-    font-size: ${typeScale.header1};
+    font-family: ${primaryFont};
+    font-size: ${typeScale.header5};
     background-color: ${(props) => props.theme.backgroundColor};
     border: solid ${(props) => props.theme.textColorNeutral} 2px;
     border-radius: 0.5rem;

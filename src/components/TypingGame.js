@@ -33,11 +33,7 @@ const TypingGame = () => {
   let { lessonId } = useParams();
 
   useEffect(() => {
-    setActualText(
-      textToArray(
-        "este es mi texto de ejemplo, ahora son mas palabras que antes, texto de ejemplo x2"
-      )
-    );
+    setActualText(textToArray("texto de ejemplo "));
     setActualToPressed(actualText[0]);
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("keyup", handleKeyup);

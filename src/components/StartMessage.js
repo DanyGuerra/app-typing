@@ -7,16 +7,22 @@ const Message = styled.div`
 
   .start-message {
     width: 0px;
-    height: 150px;
-    border-left: 70px solid ${(props) => props.theme.primaryColor};
-    border-right: 70px solid ${(props) => props.theme.primaryColor};
-    border-bottom: 35px solid transparent;
-    font-size: ${typeScale.header3};
+    height: 80px;
+    border-left: 60px solid ${(props) => props.theme.primaryColor};
+    border-right: 60px solid ${(props) => props.theme.primaryColor};
+    border-bottom: 20px solid transparent;
+    font-size: ${typeScale.header5};
     color: ${(props) => props.theme.neutralCien};
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .text-start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -25,7 +31,7 @@ function StartMessage({ isStarted }) {
     opacity: isStarted ? 0 : 1,
     transform: isStarted ? "translateY(-100%)" : "translateY(0%)",
     config: {
-      duration: 750,
+      duration: 500,
       easing: easings.easeInOutElastic,
     },
   });
@@ -40,8 +46,11 @@ function StartMessage({ isStarted }) {
     <>
       <Message>
         <animated.div className="start-message" style={animationMessage}>
-          <div>Comienza a</div>
-          <div>escribir</div>
+          <div className="text-start">
+            <div>Comienza</div>
+
+            <div>escribir</div>
+          </div>
         </animated.div>
       </Message>
     </>
