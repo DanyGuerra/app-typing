@@ -76,6 +76,13 @@ function TypingPlay({ welTextFinished, setWelTextFinished }) {
     const keyPressed = e.code;
     e.preventDefault();
 
+    const repeat = e.repeat;
+
+    if (repeat) {
+      setActualKey("");
+      return;
+    }
+
     switch (keyPressed) {
       case "Digit0":
         setActualKey("0");

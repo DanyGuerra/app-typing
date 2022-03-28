@@ -31,7 +31,10 @@ const TypingGame = () => {
   const [isMatching, setIsMatching] = React.useState(false);
   const [actualToPressed, setActualToPressed] = React.useState("");
 
-  //Cronometer
+  //Final Gameboard
+  const [finalTime, setFinalTime] = React.useState(0);
+
+  //StopWatch
   const [time, setTime] = React.useState(0);
   const [swActive, setSwActive] = React.useState(false);
   const [swPaused, setSwPaused] = React.useState(false);
@@ -152,6 +155,7 @@ const TypingGame = () => {
     setIsStarted(false);
     setHits(0);
     swReset();
+    setFinalTime(0);
   };
 
   const handleStart = () => {
@@ -162,7 +166,9 @@ const TypingGame = () => {
   const handleFinish = () => {
     // setIsStarted(false);
     setIsGameEnded(true);
+    setFinalTime(time);
     cleanup();
+    swPause();
   };
 
   // const deleteLastItem = (array) => {
@@ -411,7 +417,8 @@ const TypingGame = () => {
           swResume={swResume}
           swPaused={swPaused}
         ></GameControls>
-        <div>{time}</div>
+        <div>Final Time: {finalTime}</div>
+        <div>Actual Time: {time}</div>
         <div className="keyboard">
           <KeyboardGame
             setActualKey={setActualKey}
