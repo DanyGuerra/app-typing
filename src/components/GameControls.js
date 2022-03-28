@@ -2,6 +2,11 @@ import React from "react";
 import { PrimaryButton, SecondaryButton } from "./Buttons";
 import styled from "styled-components";
 
+const GameControlsStyle = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
 function GameControls({
   isStarted,
   handleStart,
@@ -11,25 +16,36 @@ function GameControls({
   swResume,
   swPaused,
 }) {
-  return (
-    <div>
-      {isStarted ? (
-        <></>
-      ) : (
+  const ConditionalRendering = () => {
+    if (isGameEnded) {
+      return (
+        <>
+          <SecondaryButton onClick={handleRestart}> Reiniciar </SecondaryButton>
+          <PrimaryButton>Siguiente</PrimaryButton>
+        </>
+      );
+    }
+    if (isStarted) {
+      return (
+        <>
+          {swPaused ? (
+            <PrimaryButton onClick={swResume}>Resume </PrimaryButton>
+          ) : (
+            <PrimaryButton onClick={handleSwPause}>Pause </PrimaryButton>
+          )}
+          <SecondaryButton onClick={handleRestart}> Reiniciar </SecondaryButton>
+        </>
+      );
+    } else {
+      return (
         <>
           <PrimaryButton onClick={handleStart}> Iniciar</PrimaryButton>
         </>
-      )}
-      {swPaused ? (
-        <PrimaryButton onClick={swResume}>Resume </PrimaryButton>
-      ) : (
-        <PrimaryButton onClick={handleSwPause}>Pause </PrimaryButton>
-      )}
-      <SecondaryButton onClick={handleRestart}> Reiniciar </SecondaryButton>
+      );
+    }
+  };
 
-      {isGameEnded ? <PrimaryButton>Siguiente</PrimaryButton> : <></>}
-    </div>
-  );
+  return <GameControlsStyle>{ConditionalRendering()}</GameControlsStyle>;
 }
 
 export default GameControls;
