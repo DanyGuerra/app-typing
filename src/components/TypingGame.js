@@ -6,7 +6,6 @@ import KeyboardGame from "./KeyBoardGame";
 import GameControls from "./GameControls";
 import GameBoard from "./GameBoard";
 import StartMessage from "./StartMessage";
-import { PrimaryButton } from "./Buttons";
 
 const KeyboardSection = styled.section`
   display: flex;
@@ -44,8 +43,8 @@ const TypingGame = () => {
   useEffect(() => {
     setActualText(textToArray("texto de ejemplo "));
     setActualToPressed(actualText[0]);
-    document.addEventListener("keydown", handleKeydown);
-    document.addEventListener("keyup", handleKeyup);
+    window.addEventListener("keydown", handleKeydown);
+    window.addEventListener("keyup", handleKeyup);
 
     return cleanup;
   }, []);
@@ -93,8 +92,8 @@ const TypingGame = () => {
   //StopWatch
 
   const cleanup = () => {
-    document.removeEventListener("keydown", handleKeydown);
-    document.removeEventListener("keyup", handleKeyup);
+    window.removeEventListener("keydown", handleKeydown);
+    window.removeEventListener("keyup", handleKeyup);
   };
 
   const textToArray = (content) => {
@@ -178,6 +177,11 @@ const TypingGame = () => {
   // };
 
   const handleKeydown = (e) => {
+    console.log(e.code);
+    if (isGameEnded) {
+      return;
+    }
+
     const keyPressed = e.code;
     const repeat = e.repeat;
     // e.preventDefault();
