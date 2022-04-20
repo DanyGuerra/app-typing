@@ -1,46 +1,29 @@
 {
-  "name": "app-typing",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "gsap": "^3.9.1",
-    "polished": "^4.1.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router": "^6.2.2",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "react-spring": "^9.4.3",
-    "styled-components": "^5.3.3",
-    "styled-components-modifiers": "^1.2.5",
-    "use-spring": "^0.2.4",
-    "web-vitals": "^2.1.4"
-  },
+  "name": "y",
+  "version": "1.0.0",
+  "description": "This is a app typing",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build",
+    "dev": "nodemon server/index.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanyGuerra/app-typing.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanyGuerra/app-typing/issues"
+  },
+  "homepage": "https://github.com/DanyGuerra/app-typing#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
