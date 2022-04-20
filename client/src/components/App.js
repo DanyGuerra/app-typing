@@ -20,10 +20,6 @@ function App() {
     setActualTheme();
   }, []);
 
-  useEffect(() => {
-    setActualTheme();
-  }, [useDarkTheme]);
-
   const setActualTheme = () => {
     const existingPreference = localStorage.getItem("darkState");
     if (existingPreference) {
