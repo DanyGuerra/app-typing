@@ -77,10 +77,12 @@ const TypingGame = () => {
 
   const swPause = () => {
     setSwPaused(true);
+    setIsStarted(false);
   };
 
   const swResume = () => {
     setSwPaused(false);
+    setIsStarted(false);
   };
 
   const swReset = () => {
