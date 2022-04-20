@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -13,7 +14,27 @@ import TypingGame from "./TypingGame";
 
 function App() {
   const [welTextFinished, setWelTextFinished] = React.useState(false);
-  const [useDarkTheme, setUseDarkTheme] = React.useState(false);
+  const [useDarkTheme, setUseDarkTheme] = React.useState();
+
+  useEffect(() => {
+    setActualTheme();
+  }, []);
+
+  useEffect(() => {
+    setActualTheme();
+  }, [useDarkTheme]);
+
+  const setActualTheme = () => {
+    const existingPreference = localStorage.getItem("darkState");
+    if (existingPreference) {
+      existingPreference === "false"
+        ? setUseDarkTheme(false)
+        : setUseDarkTheme(true);
+    } else {
+      setUseDarkTheme(false);
+      localStorage.setItem("darkState", false);
+    }
+  };
 
   return (
     <Router>
