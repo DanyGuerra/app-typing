@@ -26,7 +26,7 @@ const Message = styled.div`
   }
 `;
 
-function StartMessage({ isStarted }) {
+function StartMessage({ isStarted, swPaused }) {
   const animationMessage = useSpring({
     opacity: isStarted ? 0 : 1,
     transform: isStarted ? "translateY(-100%)" : "translateY(0%)",

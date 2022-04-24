@@ -82,7 +82,7 @@ const TypingGame = () => {
 
   const swResume = () => {
     setSwPaused(false);
-    setIsStarted(false);
+    setIsStarted(true);
   };
 
   const swReset = () => {
@@ -401,7 +401,7 @@ const TypingGame = () => {
   return (
     <>
       <KeyboardSection>
-        <StartMessage isStarted={isStarted}></StartMessage>
+        <StartMessage isStarted={isStarted} swPaused={swPaused}></StartMessage>
         <TextBoxGame
           actualText={actualText}
           handleKeydown={handleKeydown}
